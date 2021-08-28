@@ -10,6 +10,13 @@ body {
   font-family: "shrikhand";
 }
 
+body > div:first-child,
+div#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   color: inherit;
   text-decoration: none;
