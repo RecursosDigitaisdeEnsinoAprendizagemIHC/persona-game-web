@@ -6,6 +6,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 85px;
+  width: 100%;
   box-shadow: 0px 0px 22px;
   background: ${(props) => props.theme.primary};
 `;
