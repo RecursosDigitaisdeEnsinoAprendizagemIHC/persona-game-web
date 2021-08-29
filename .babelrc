@@ -1,0 +1,5 @@
+// prevent styled components losing custom style on page reload
+{
+  "presets": ["next/babel"],
+  "plugins": [["styled-components", { "ssr": true }]]
+}
