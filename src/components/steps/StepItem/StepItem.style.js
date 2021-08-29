@@ -14,4 +14,5 @@ export const Step = styled.div`
   font-size: 24px;
   line-height: 35px;
   color: ${(props) => props.theme.primary};
+  cursor: pointer;
 `;
