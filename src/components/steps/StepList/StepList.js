@@ -9,7 +9,7 @@ const StepList = ({ steps }) => {
   return (
     <ListContainer>
       {steps.map((step, index) => (
-        <ListItem>
+        <ListItem key={step.number}>
           <StepItem step={step} />
           {steps.length !== index + 1 && <Trail />}
         </ListItem>
