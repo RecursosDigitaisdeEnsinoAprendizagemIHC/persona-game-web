@@ -9,6 +9,8 @@ export const HeaderContainer = styled.div`
 
 export const HeaderBtn = styled.div`
   width: 80px;
+  cursor: pointer;
+  z-index: 1;
 `;
 
 export const HeaderTitle = styled.div`

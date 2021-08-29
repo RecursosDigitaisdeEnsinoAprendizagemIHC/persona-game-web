@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,10 +16,12 @@ import PhaseList from "../components/PhaseList/PhaseList";
 import theme from "../constants/theme";
 
 const PhasesMenu = () => {
+  const router = useRouter();
+
   return (
     <Container>
       <HeaderContainer>
-        <HeaderBtn>
+        <HeaderBtn onClick={() => router.push("./")}>
           <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
         </HeaderBtn>
         <HeaderTitle>Fases</HeaderTitle>
