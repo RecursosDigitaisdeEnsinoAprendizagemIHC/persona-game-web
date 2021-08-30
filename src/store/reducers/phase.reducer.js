@@ -11,6 +11,7 @@ const phaseReducer = (state = initialStete, action) => {
         ...state,
         phases: action.phases,
       };
+      break;
     default:
       break;
   }
