@@ -13,7 +13,6 @@ export const getPhasesList = async (token) => {
     const lastStepNumber = phase.steps[phase.steps.length - 1].number;
     for (const step of phase.steps) {
       step.locked = true;
-      let prevStepNumber;
       if (
         step.number === 1 &&
         (phase.number === 1 ||
@@ -22,7 +21,7 @@ export const getPhasesList = async (token) => {
         step.locked = false;
       } else if (
         finishedStepsByPhase[phase.id] &&
-        finishedStepsByPhase[phase.id].includes(step.number)
+        finishedStepsByPhase[phase.id].includes(step.number - 1)
       ) {
         step.locked = false;
       }
