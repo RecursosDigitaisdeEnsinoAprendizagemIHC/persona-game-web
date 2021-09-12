@@ -14,8 +14,9 @@ export const Header = styled.div`
     color: ${(props) => props.theme.secondary};
   }
 
-  span:nth-of-type(1n) {
+  span:first-child {
     width: 20%;
+    cursor: pointer;
   }
 
   span:nth-of-type(2n) {

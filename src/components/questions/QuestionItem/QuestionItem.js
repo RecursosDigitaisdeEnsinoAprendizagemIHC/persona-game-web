@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TFOptions from "../TFOptions/TFOptions";
+import { useRouter } from "next/router";
 
 // components
 import {
@@ -11,33 +12,48 @@ import {
 import Button from "../../Button/Button";
 import MCOptions from "../MCOptions/MCOptions";
 
-const QuestionItem = () => {
+const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
-  const questionType = "MC";
+
+  const router = useRouter();
+
+  const confirmHandler = () => {
+    setSelectedAnswer("");
+    onConfirm(selectedAnswer);
+  };
 
   return (
     <div>
       <Header>
-        <span>Sair</span>
+        <span onClick={() => router.push("/phases-menu")}>Sair</span>
         <span>Fase 1 Etapa 1</span>
       </Header>
 
       <div>
-        <QuestionNumber>Questão 1: </QuestionNumber>
-        <QuestionText>
-          Uma persona é uma forma de representar um tipo de público alvo.
-        </QuestionText>
+        <QuestionNumber>Questão {questionNumber}: </QuestionNumber>
+        <QuestionText>{question.title}</QuestionText>
       </div>
 
-      {questionType === "TF" ? (
+      {question.type === "VF" ? (
         <TFOptions selected={selectedAnswer} setSelected={setSelectedAnswer} />
       ) : (
-        <MCOptions selected={selectedAnswer} setSelected={setSelectedAnswer} />
+        <MCOptions
+          options={question.questionOptions}
+          selected={selectedAnswer}
+          setSelected={setSelectedAnswer}
+        />
       )}
 
       <Footer>
-        <Button color="secondary">{"<"} Anterior</Button>
         <Button
+          onClick={() => onPrevious()}
+          color="secondary"
+          disabled={questionNumber === 1}
+        >
+          {"<"} Anterior
+        </Button>
+        <Button
+          onClick={() => confirmHandler()}
           color={selectedAnswer ? "primary" : "lightGray"}
           disabled={!selectedAnswer}
         >

@@ -8,13 +8,17 @@ import ReduxThunk from "redux-thunk";
 import theme from "../constants/theme";
 import "../styles/globals.css";
 import Header from "../components/Header/Header";
+import AppWrapper from "../components/AppWrapper/AppWrapper";
+
+// redux
 import userReducer from "../store/reducers/user.reducer";
 import phaseReducer from "../store/reducers/phase.reducer";
-import AppWrapper from "../components/AppWrapper/AppWrapper";
+import stepReducer from "../store/reducers/step.reducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
   phases: phaseReducer,
+  step: stepReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

@@ -18,6 +18,13 @@ export const StyledButton = styled.button`
     props.color ? props.theme[props.color] : props.theme.primary};
 
   ${(props) =>
+    props.disabled &&
+    css`
+      border-color: ${(props) => props.theme.lightGray};
+      color: ${(props) => props.theme.lightGray};
+    `}
+
+  ${(props) =>
     props.active &&
     css`
       color: white;

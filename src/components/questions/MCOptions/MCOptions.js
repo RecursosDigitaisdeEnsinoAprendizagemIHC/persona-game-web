@@ -10,44 +10,35 @@ import {
   OptionText,
 } from "./MCOptions.style";
 
-const MCOptions = ({ selected, setSelected }) => {
+const CHUNK_SIZE = 2;
+
+const MCOptions = ({ options, selected, setSelected }) => {
+  const arrayChunk = (arr) => {
+    const newArr = [];
+    for (let i = 0; i < options.length / CHUNK_SIZE; i++) {
+      const startIndex = i * CHUNK_SIZE;
+      newArr.push(arr.slice(startIndex, startIndex + CHUNK_SIZE));
+    }
+    return newArr;
+  };
+
   return (
     <Container>
       <OptionsContainer>
-        <Row>
-          <OptionContainer
-            selected={selected === "A"}
-            onClick={() => setSelected("A")}
-          >
-            <Option>A</Option>
-            <OptionText>O público-alvo do meu produto</OptionText>
-          </OptionContainer>
-          <OptionContainer
-            selected={selected === "B"}
-            onClick={() => setSelected("B")}
-          >
-            <Option>B</Option>
-            <OptionText>O menor tipo de público do meu produto</OptionText>
-          </OptionContainer>
-        </Row>
-        <Row>
-          <OptionContainer
-            selected={selected === "C"}
-            onClick={() => setSelected("C")}
-          >
-            <Option>C</Option>
-            <OptionText>
-              Persona que meu projeto não pretende atingir
-            </OptionText>
-          </OptionContainer>
-          <OptionContainer
-            selected={selected === "D"}
-            onClick={() => setSelected("D")}
-          >
-            <Option>D</Option>
-            <OptionText>O público-alvo do meu produto</OptionText>
-          </OptionContainer>
-        </Row>
+        {arrayChunk(options).map((subOptions, index) => (
+          <Row key={index}>
+            {subOptions.map((option) => (
+              <OptionContainer
+                key={option.id}
+                selected={selected === option.option}
+                onClick={() => setSelected(option.option)}
+              >
+                <Option>{option.option}</Option>
+                <OptionText>{option.description}</OptionText>
+              </OptionContainer>
+            ))}
+          </Row>
+        ))}
       </OptionsContainer>
     </Container>
   );
