@@ -32,13 +32,20 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
       <div>
         <QuestionNumber>Questão {questionNumber}: </QuestionNumber>
         <QuestionText>{question.title}</QuestionText>
+        {question.description && (
+          <QuestionText>
+            <div dangerouslySetInnerHTML={{ __html: question.description }} />
+          </QuestionText>
+        )}
       </div>
 
       {question.type === "VF" ? (
         <TFOptions selected={selectedAnswer} setSelected={setSelectedAnswer} />
       ) : (
         <MCOptions
-          options={question.questionOptions}
+          options={question.questionOptions.sort((a, b) =>
+            a.option > b.option ? 1 : -1
+          )}
           selected={selectedAnswer}
           setSelected={setSelectedAnswer}
         />
