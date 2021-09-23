@@ -45,6 +45,7 @@ export const Option = styled.div`
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  min-width: 40px;
   font-size: 18px;
   color: ${(props) => props.theme.primary};
 `;
