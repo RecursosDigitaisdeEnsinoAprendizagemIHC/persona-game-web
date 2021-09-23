@@ -1,8 +1,14 @@
-import { START_NEW_STEP, SET_QUESTION_ANSWER } from "../actions/step.action";
+import {
+  START_NEW_STEP,
+  SET_QUESTION_ANSWER,
+  FINISH_STEP,
+  CLEAR_FINISH_STEP,
+} from "../actions/step.action";
 
 const initialStete = {
   questions: [],
   answeredQuestions: [],
+  finishedStep: null,
 };
 
 const stepReducer = (state = initialStete, action) => {
@@ -26,6 +32,23 @@ const stepReducer = (state = initialStete, action) => {
       state = {
         ...state,
         answeredQuestions: [...state.answeredQuestions, questionAnswer],
+      };
+      break;
+    case FINISH_STEP:
+      state = {
+        ...state,
+        finishedStep: {
+          success: action.stepResult.success,
+          rewards: action.stepResult.rewards,
+        },
+        answeredQuestions: [],
+        questions: [],
+      };
+      break;
+    case CLEAR_FINISH_STEP:
+      state = {
+        ...state,
+        finishedStep: null,
       };
       break;
     default:

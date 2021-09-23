@@ -20,15 +20,13 @@ import { getAllPhases } from "../store/actions/phase.action";
 const PhasesMenu = () => {
   const phases = useSelector((state) => state.phases.phases);
   const router = useRouter();
-  const dispath = useDispatch();
-  console.log(phases);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispath(getAllPhases());
+    dispatch(getAllPhases());
   }, []);
 
   if (!phases) {
-    console.log(phases);
     return <div />;
   }
 
