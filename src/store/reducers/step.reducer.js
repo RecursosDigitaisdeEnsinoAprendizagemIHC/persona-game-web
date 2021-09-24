@@ -42,13 +42,13 @@ const stepReducer = (state = initialStete, action) => {
           rewards: action.stepResult.rewards,
         },
         answeredQuestions: [],
-        questions: [],
       };
       break;
     case CLEAR_FINISH_STEP:
       state = {
         ...state,
         finishedStep: null,
+        questions: [],
       };
       break;
     default:

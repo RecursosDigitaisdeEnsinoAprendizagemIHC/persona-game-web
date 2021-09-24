@@ -27,11 +27,10 @@ const SUCCESS_MESSAGE =
   "Parabéns! Você finalizou a fase com sucesso e ganhou as seguintes recompensas:";
 const FAILURE_MESSAGE = `Infelizmente você não atingiu a quantidade mínima de ${MIN_CORRECT_ANSWERS} acertos, revise o conteúdo e tente novamente.`;
 
-const FinishedStepModal = ({ open, onClose, onContinue }) => {
-  const data = useSelector((state) => state.step.finishedStep);
+const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
   const router = useRouter();
 
-  if (!data) return <div />;
+  if (!open) return <div />;
 
   const { success } = data;
   const continueHandler = () => {
@@ -76,7 +75,7 @@ const FinishedStepModal = ({ open, onClose, onContinue }) => {
         </Row>
         <ButtonContainer>
           <Button color="primary" onClick={() => continueHandler()}>
-            Continuar
+            Finalizar
           </Button>
         </ButtonContainer>
       </Content>

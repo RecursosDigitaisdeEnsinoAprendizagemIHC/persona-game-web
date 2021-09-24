@@ -10,6 +10,7 @@ import FinishedStepModal from "../components/ui/modal/FinishedStepModal/Finished
 
 // redux
 import {
+  clearFinishedStep,
   finishStep,
   setQuestionAnswer,
   startNewStep,
@@ -32,12 +33,19 @@ const Step = (props) => {
         questionAnswer.questionId === questions[questionIndex].id
     )
   );
+  const finishedStep = useSelector((state) => state.step.finishedStep);
 
   useEffect(() => {
     if (stepNumber) {
       dispatch(startNewStep(stepId));
     }
   }, [stepNumber]);
+
+  useEffect(() => {
+    if (finishedStep) {
+      setFinishedModalOpen(true);
+    }
+  }, [finishedStep]);
 
   const previousQuestionHandler = () => {
     if (questionIndex === 0) return;
@@ -54,20 +62,17 @@ const Step = (props) => {
 
     if (questionIndex + 1 === questions.length) {
       dispatch(finishStep(stepId));
-      setFinishedModalOpen(true);
     } else {
       setQuestionIndex((curIndex) => curIndex + 1);
     }
   };
 
   const completedStepHandler = () => {
+    dispatch(clearFinishedStep());
     dispatch(getAllPhases());
+    setFinishedModalOpen(false);
     router.push("/phases-menu");
   };
-
-  if (questions.length === 0) {
-    return <div />;
-  }
 
   return (
     <Container>
@@ -77,17 +82,22 @@ const Step = (props) => {
         onContinue={continueModal}
         onClose={() => {}}
       />
-      <FinishedStepModal
-        open={finishedModalOpen}
-        onContinue={completedStepHandler}
-        onClose={() => {}}
-      />
-      <QuestionItem
-        questionNumber={questionIndex + 1}
-        question={questions[questionIndex]}
-        onConfirm={nextQuestionHandler}
-        onPrevious={previousQuestionHandler}
-      />
+      {finishedModalOpen && (
+        <FinishedStepModal
+          data={finishedStep}
+          open={finishedModalOpen}
+          onContinue={completedStepHandler}
+          onClose={() => {}}
+        />
+      )}
+      {questions[questionIndex] && (
+        <QuestionItem
+          questionNumber={questionIndex + 1}
+          question={questions[questionIndex]}
+          onConfirm={nextQuestionHandler}
+          onPrevious={previousQuestionHandler}
+        />
+      )}
     </Container>
   );
 };
