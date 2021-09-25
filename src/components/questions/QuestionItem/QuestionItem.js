@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 // components
 import {
+  Container,
   Header,
   QuestionNumber,
   QuestionText,
@@ -23,7 +24,7 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
   };
 
   return (
-    <div>
+    <Container>
       <Header>
         <span onClick={() => router.push("/phases-menu")}>Sair</span>
         <span>Fase 1 Etapa 1</span>
@@ -67,7 +68,7 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
           Confirmar
         </Button>
       </Footer>
-    </div>
+    </Container>
   );
 };
 

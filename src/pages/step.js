@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // components
 import Container from "../components/ui/Container/Container";
-import QuestionItem from "../components/questions/QuestionItem/QuestionItem";
+import Questions from "../components/questions/Questions/Questions";
 import QuestionAnswerModal from "../components/ui/modal/QuestionAnswerModal/QuestionAnswerModal";
 import FinishedStepModal from "../components/ui/modal/FinishedStepModal/FinishedStepModal";
 
@@ -91,9 +91,10 @@ const Step = (props) => {
         />
       )}
       {questions[questionIndex] && (
-        <QuestionItem
+        <Questions
+          questions={questions}
           questionNumber={questionIndex + 1}
-          question={questions[questionIndex]}
+          selectedQuestion={questions[questionIndex]}
           onConfirm={nextQuestionHandler}
           onPrevious={previousQuestionHandler}
         />

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  padding-right: 30px;
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
