@@ -6,7 +6,6 @@ import {
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 
 // components
 import {

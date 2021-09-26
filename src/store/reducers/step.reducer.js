@@ -20,7 +20,7 @@ const stepReducer = (state = initialStete, action) => {
         questions: action.questions,
       };
       break;
-    case SET_QUESTION_ANSWER:
+    case SET_QUESTION_ANSWER: {
       const questionAnswer = {
         questionId: action.questionId,
         answerSent: action.answerSent,
@@ -35,6 +35,7 @@ const stepReducer = (state = initialStete, action) => {
         answeredQuestions: [...state.answeredQuestions, questionAnswer],
       };
       break;
+    }
     case FINISH_STEP:
       state = {
         ...state,
