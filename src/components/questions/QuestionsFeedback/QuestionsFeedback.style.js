@@ -42,3 +42,9 @@ export const QuestionItem = styled.div`
   font-size: 18px;
   line-height: 26px;
 `;
+
+export const CountdownText = styled.span`
+  font-size: 36px;
+  line-height: 52px;
+  color: ${(props) => (props.fail ? props.theme.error : props.theme.primary)};
+`;

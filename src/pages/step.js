@@ -11,6 +11,7 @@ import FinishedStepModal from "../components/ui/modal/FinishedStepModal/Finished
 // redux
 import {
   clearFinishedStep,
+  failStep,
   finishStep,
   setQuestionAnswer,
   startNewStep,
@@ -21,6 +22,7 @@ const Step = (props) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [finishedModalOpen, setFinishedModalOpen] = useState(false);
+  const [startDate, setStartDate] = useState(null);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -34,6 +36,10 @@ const Step = (props) => {
     )
   );
   const finishedStep = useSelector((state) => state.step.finishedStep);
+
+  useEffect(() => {
+    if (questions && !startDate) setStartDate(Date.now());
+  }, [questions, startDate]);
 
   useEffect(() => {
     if (stepNumber) {
@@ -74,6 +80,10 @@ const Step = (props) => {
     router.push("/phases-menu");
   };
 
+  const failStepHandler = (reason) => {
+    dispatch(failStep(reason));
+  };
+
   return (
     <Container>
       <QuestionAnswerModal
@@ -90,13 +100,16 @@ const Step = (props) => {
           onClose={() => {}}
         />
       )}
-      {questions[questionIndex] && (
+
+      {questions[questionIndex] && startDate && (
         <Questions
           questions={questions}
           questionNumber={questionIndex + 1}
           selectedQuestion={questions[questionIndex]}
+          startDate={startDate}
           onConfirm={nextQuestionHandler}
           onPrevious={previousQuestionHandler}
+          onFail={failStepHandler}
         />
       )}
     </Container>

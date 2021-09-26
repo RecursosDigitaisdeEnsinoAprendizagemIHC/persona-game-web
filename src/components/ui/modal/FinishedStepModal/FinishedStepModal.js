@@ -26,13 +26,14 @@ const MIN_CORRECT_ANSWERS = 3;
 const SUCCESS_MESSAGE =
   "Parabéns! Você finalizou a fase com sucesso e ganhou as seguintes recompensas:";
 const FAILURE_MESSAGE = `Infelizmente você não atingiu a quantidade mínima de ${MIN_CORRECT_ANSWERS} acertos, revise o conteúdo e tente novamente.`;
+const TIME_OVER_MESSAGE = "O tempo limite da fase se esgotou :(";
 
 const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
   const router = useRouter();
 
   if (!open) return <div />;
 
-  const { success } = data;
+  const { success, reason } = data;
   const continueHandler = () => {
     onClose();
     onContinue();
@@ -41,6 +42,14 @@ const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
   const clickHereHandler = () => {
     const route = success ? "/rewards" : "/summary";
     router.push(route);
+  };
+
+  const getFailureMessage = () => {
+    let message = FAILURE_MESSAGE;
+    if (reason && reason === "TIME_OVER") {
+      message = TIME_OVER_MESSAGE;
+    }
+    return message;
   };
 
   return (
@@ -55,7 +64,7 @@ const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
             />
           </IconContainer>
           <TextContainer>
-            <span>{success ? SUCCESS_MESSAGE : FAILURE_MESSAGE}</span>
+            <span>{success ? SUCCESS_MESSAGE : getFailureMessage()}</span>
           </TextContainer>
         </Row>
         <Row>

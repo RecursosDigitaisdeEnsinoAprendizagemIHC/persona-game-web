@@ -9,8 +9,10 @@ const Questions = ({
   questions,
   selectedQuestion,
   questionNumber,
+  startDate,
   onConfirm,
   onPrevious,
+  onFail,
 }) => {
   return (
     <Container>
@@ -23,6 +25,8 @@ const Questions = ({
       <QuestionsFeedback
         questions={questions}
         selectedQuestion={selectedQuestion}
+        startDate={startDate}
+        onFail={onFail}
       />
     </Container>
   );
