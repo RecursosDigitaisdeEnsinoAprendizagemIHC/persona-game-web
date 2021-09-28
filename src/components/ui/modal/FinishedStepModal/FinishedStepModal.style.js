@@ -27,8 +27,6 @@ export const TextContainer = styled.div`
   color: ${(props) => props.theme.secondary};
 `;
 
-export const RewardContainer = styled.div``;
-
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;

@@ -13,7 +13,6 @@ import {
   Row,
   IconContainer,
   TextContainer,
-  RewardContainer,
   ButtonContainer,
 } from "./FinishedStepModal.style";
 import Button from "../../../Button/Button";
