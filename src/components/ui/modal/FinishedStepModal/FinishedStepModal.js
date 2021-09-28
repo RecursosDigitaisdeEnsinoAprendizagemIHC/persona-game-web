@@ -17,6 +17,7 @@ import {
   ButtonContainer,
 } from "./FinishedStepModal.style";
 import Button from "../../../Button/Button";
+import RewardCarousel from "../../../RewardCarousel/RewardCarousel";
 
 // constants
 import theme from "../../../../constants/theme";
@@ -32,7 +33,8 @@ const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
 
   if (!open) return <div />;
 
-  const { success, reason } = data;
+  const { success, reason, rewards } = data;
+
   const continueHandler = () => {
     onClose();
     onContinue();
@@ -66,8 +68,8 @@ const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
             <span>{success ? SUCCESS_MESSAGE : getFailureMessage()}</span>
           </TextContainer>
         </Row>
+        <Row>{rewards && <RewardCarousel rewards={rewards} />}</Row>
         <Row>
-          {success && <RewardContainer></RewardContainer>}
           <TextContainer>
             <span>
               <a href="#" onClick={() => clickHereHandler()}>
