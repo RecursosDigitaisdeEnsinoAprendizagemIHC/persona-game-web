@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // components
 import Container from "../components/ui/Container/Container";
 import PageHeader from "../components/ui/PageHeader/PageHeader";
+import Personas from "../components/ui/rewards/personas/Personas";
 import Tabs from "../components/ui/Tabs/Tabs";
 
 // redux
@@ -31,8 +32,6 @@ const Rewards = () => {
     dispatch(getAllRewards());
     dispatch(getUserRewards());
   }, []);
-  console.log(rewards);
-  console.log(userRewards);
 
   return (
     <Container>
@@ -42,7 +41,12 @@ const Rewards = () => {
         value={selectedTab}
         onChange={(newValue) => setSelectedTab(newValue)}
       >
-        {selectedTab === 0 && <div></div>}
+        {selectedTab === 0 && (
+          <Personas
+            rewards={rewards.filter((item) => item.type === "CARD")}
+            userRewards={userRewards}
+          />
+        )}
         {selectedTab === 1 && <div></div>}
       </Tabs>
     </Container>
