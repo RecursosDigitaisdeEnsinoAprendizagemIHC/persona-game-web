@@ -14,11 +14,13 @@ import AppWrapper from "../components/AppWrapper/AppWrapper";
 import userReducer from "../store/reducers/user.reducer";
 import phaseReducer from "../store/reducers/phase.reducer";
 import stepReducer from "../store/reducers/step.reducer";
+import rewardReducer from "../store/reducers/reward.reducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
   phases: phaseReducer,
   step: stepReducer,
+  reward: rewardReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
