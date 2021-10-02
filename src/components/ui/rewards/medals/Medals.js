@@ -34,7 +34,7 @@ const rewardsInfo = {
 };
 
 const MedalsList = ({ userHasReward }) => {
-  const { level } = userHasReward;
+  const level = userHasReward?.level;
   const medalLevel = level ? medalsLevel[level] : 0;
 
   return (
