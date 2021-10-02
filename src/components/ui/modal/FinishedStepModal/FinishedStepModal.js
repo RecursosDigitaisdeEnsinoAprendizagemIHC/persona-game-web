@@ -67,7 +67,7 @@ const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
             <span>{success ? SUCCESS_MESSAGE : getFailureMessage()}</span>
           </TextContainer>
         </Row>
-        <Row>{rewards && <RewardCarousel rewards={rewards} />}</Row>
+        <Row>{rewards.length > 0 && <RewardCarousel rewards={rewards} />}</Row>
         <Row>
           <TextContainer>
             <span>
