@@ -14,7 +14,7 @@ const MainMenu = () => {
       <MainMenuItem
         icon={faBook}
         name="Conteúdo"
-        onClick={() => router.push("/persona-content")}
+        onClick={() => router.push("/summary")}
       />
       <MainMenuItem
         icon={faPlay}
