@@ -42,9 +42,6 @@ const Personas = ({ rewards, userRewards }) => {
     return <div />;
   }
 
-  console.log(rewards);
-  console.log(userRewards);
-
   return (
     <div>
       <Title>Persona Primária</Title>

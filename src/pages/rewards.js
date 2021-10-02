@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Container from "../components/ui/Container/Container";
 import PageHeader from "../components/ui/PageHeader/PageHeader";
 import Personas from "../components/ui/rewards/personas/Personas";
+import Medals from "../components/ui/rewards/medals/Medals";
 import Tabs from "../components/ui/Tabs/Tabs";
 
 // redux
@@ -47,7 +48,12 @@ const Rewards = () => {
             userRewards={userRewards}
           />
         )}
-        {selectedTab === 1 && <div></div>}
+        {selectedTab === 1 && (
+          <Medals
+            rewards={rewards.filter((item) => item.type !== "CARD")}
+            userRewards={userRewards}
+          />
+        )}
       </Tabs>
     </Container>
   );
