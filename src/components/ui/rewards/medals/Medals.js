@@ -25,6 +25,14 @@ const medalsLevel = {
   gold: 3,
 };
 
+const rewardsInfo = {
+  TIME_MEDAL:
+    "Ouro: 0~90 segundos, Prata: 91~180 segundos e Bronze: 180~240 segundos.",
+  QUESTION_COMBO_MEDAL:
+    "Ouro: combo de 15, Prata: combo de 10 e Bronze: combo de 5",
+  STEP_COMBO_MEDAL: "Ouro: combo de 5, Prata: combo de 3, Bronze: combo de 2",
+};
+
 const MedalsList = ({ userHasReward }) => {
   const { level } = userHasReward;
   const medalLevel = level ? medalsLevel[level] : 0;
@@ -57,16 +65,19 @@ const MedalsList = ({ userHasReward }) => {
 };
 
 const Medals = ({ rewards, userRewards }) => {
+  console.log(rewards);
   return (
     <Container>
       {rewards.map((reward) => (
         <div key={reward.id}>
           <TitleContainer>
             <Title>{reward.name}</Title>
-            <InfoContainer data-tip={reward.description}>
+            <InfoContainer
+              data-tip={reward.description + "<br>" + rewardsInfo[reward.type]}
+            >
               <FontAwesomeIcon icon={faInfoCircle} color={theme.primary} />
             </InfoContainer>
-            <ReactTooltip />
+            <ReactTooltip html={true} />
           </TitleContainer>
           <MedalsList
             userHasReward={userRewards.find(
