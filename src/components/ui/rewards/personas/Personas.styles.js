@@ -22,6 +22,14 @@ export const Row = styled.div`
   gap: 30px;
 `;
 
+export const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+`;
+
 export const Avatar = styled.div`
   width: 100px;
   height: 100px;

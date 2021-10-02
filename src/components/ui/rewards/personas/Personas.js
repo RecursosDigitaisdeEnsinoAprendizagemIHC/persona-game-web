@@ -1,6 +1,7 @@
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { faLock, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactTooltip from "react-tooltip";
 
 // components
 import {
@@ -15,6 +16,7 @@ import {
   RewardIcon,
   RewardName,
   RewardText,
+  InfoContainer,
 } from "./Personas.styles";
 
 import theme from "../../../../constants/theme";
@@ -44,7 +46,13 @@ const Personas = ({ rewards, userRewards }) => {
 
   return (
     <div>
-      <Title>Persona Primária</Title>
+      <Row>
+        <Title>Persona Primária</Title>
+        <InfoContainer data-tip="As recompensas de cards de personas são desbloqueadas em cada etapa completa.">
+          <FontAwesomeIcon icon={faInfoCircle} color={theme.primary} />
+        </InfoContainer>
+        <ReactTooltip />
+      </Row>
       <Container>
         <Row>
           <Avatar>
