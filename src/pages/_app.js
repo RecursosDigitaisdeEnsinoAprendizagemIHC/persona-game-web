@@ -4,6 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 import theme from "../constants/theme";
 import "../styles/globals.css";
@@ -39,6 +41,7 @@ function MyApp({ Component, pageProps }) {
           </Head>
           <Header />
           <Component {...pageProps} />
+          <ToastContainer />
         </AppWrapper>
       </ThemeProvider>
     </Provider>

@@ -1,5 +1,6 @@
 import { checkQuestionAnswer } from "../../services/question.service";
 import { startStep, checkStepAnswers } from "../../services/step.service";
+import { toast } from 'react-toastify';
 
 export const START_NEW_STEP = "START_NEW_STEP";
 export const SET_QUESTION_ANSWER = "SET_QUESTION_ANSWER";
@@ -13,8 +14,9 @@ export const startNewStep = (stepId) => {
       const token = getState().user.userToken;
       const questions = await startStep(token, stepId);
       dispatch({ type: START_NEW_STEP, questions });
+      toast.success('Questionario iniciado.');
     } catch (err) {
-      console.error(err);
+      toast.error(err?.response?.data?.error?.message);
       return Promise.reject(err);
     }
   };
@@ -28,7 +30,7 @@ export const setQuestionAnswer = (questionId, answerSent) => {
       const answer = await checkQuestionAnswer(token, questionId, answerSent);
       dispatch({ type: SET_QUESTION_ANSWER, questionId, answerSent, answer });
     } catch (err) {
-      console.error(err);
+      toast.error(err?.response?.data?.error?.message);
       return Promise.reject(err);
     }
   };
@@ -43,7 +45,7 @@ export const finishStep = (stepId) => {
       const stepResult = await checkStepAnswers(token, stepId, answers);
       dispatch({ type: FINISH_STEP, stepId, stepResult });
     } catch (err) {
-      console.error(err);
+      toast.error(err?.response?.data?.error?.message);
       return Promise.reject(err);
     }
   };
