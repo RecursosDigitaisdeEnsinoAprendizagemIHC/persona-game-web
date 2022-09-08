@@ -12,7 +12,7 @@ const ModalSystemError = ({ openModal, error, message }) => {
                 <Container>
                 <Card>
                     <CardContent>
-                    <AlertImg src="/alert_message.svg" />
+                    <AlertImg src="/error.svg" />
                     <Body>
                         <Title>Erro no sistema</Title>
                         <SubTitle>{`Erro: ${error}`}</SubTitle>
