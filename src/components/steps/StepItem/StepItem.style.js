@@ -15,4 +15,8 @@ export const Step = styled.div`
   line-height: 35px;
   color: ${(props) => props.theme.primary};
   cursor: pointer;
+
+  :hover{
+    background-color: rgba(169, 4, 191, 0.15);
+  }
 `;

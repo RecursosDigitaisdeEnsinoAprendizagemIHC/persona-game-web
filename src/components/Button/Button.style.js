@@ -11,6 +11,10 @@ export const StyledButton = styled.button`
   background: white;
   cursor: pointer;
 
+  :hover{
+    background: ${(props) => props.color === "primary" ? 'rgba(169, 4, 191, 0.15)' : 'rgba(3, 49, 140, 0.15)'};
+  }
+
   font-family: "shrikhand";
   font-size: 18px;
   line-height: 26px;

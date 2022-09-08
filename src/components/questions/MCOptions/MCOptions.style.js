@@ -48,6 +48,9 @@ export const Option = styled.div`
   min-width: 40px;
   font-size: 18px;
   color: ${(props) => props.theme.primary};
+  :hover{
+    background-color: rgba(169, 4, 191, 0.15);
+  }
 `;
 
 export const OptionText = styled.span`

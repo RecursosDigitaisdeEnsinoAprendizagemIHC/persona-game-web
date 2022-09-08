@@ -10,6 +10,9 @@ export const ItemContainer = styled.div`
   gap: 13px;
   cursor: pointer;
 
+  :hover{
+    background-color: rgba(169, 4, 191, 0.15);
+  }
   border: 6px solid ${(props) => props.theme.primary};
   box-sizing: border-box;
   box-shadow: 0px 0px 22px rgba(169, 4, 191, 0.74);

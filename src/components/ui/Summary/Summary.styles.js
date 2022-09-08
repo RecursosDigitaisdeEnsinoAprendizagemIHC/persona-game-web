@@ -29,6 +29,8 @@ export const Content = styled.div`
   flex-direction: column;
   gap: 5px;
   padding-left: 30px;
+
+
 `;
 
 export const ContentTitle = styled.span`
