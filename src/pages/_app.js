@@ -6,6 +6,8 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
+import 'react-tippy/dist/react-tippy';
+import 'react-tippy/dist/tippy.css'
 
 import theme from "../constants/theme";
 import "../styles/globals.css";

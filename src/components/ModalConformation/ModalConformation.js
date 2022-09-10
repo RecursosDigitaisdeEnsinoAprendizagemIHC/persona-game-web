@@ -19,6 +19,7 @@ const ModalConfirmation = ({ openModal, handleConfirm}) => {
                             <Button
                                 onClick={() => setIsOpen(false)}
                                 color="secondary"
+                                TooltipText="voltar para tela anterior"
                             >
                                 Voltar
                             </Button>
@@ -28,6 +29,7 @@ const ModalConfirmation = ({ openModal, handleConfirm}) => {
                                     handleConfirm()
                                 }}
                                 color="primary"
+                                TooltipText="confirmar ação"
                             >
                                 Confirmar
                             </Button>

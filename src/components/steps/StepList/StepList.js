@@ -1,4 +1,5 @@
 import React from "react";
+import { Tooltip } from 'react-tippy';
 
 // components
 import { ListContainer, ListItem } from "./StepList.style";
@@ -9,10 +10,19 @@ const StepList = ({ steps }) => {
   return (
     <ListContainer>
       {steps.map((step, index) => (
-        <ListItem key={step.number}>
-          <StepItem step={step} />
-          {steps.length !== index + 1 && <Trail />}
-        </ListItem>
+        <Tooltip
+          title={!step.locked && `iniciar fase ${step.number}`}
+          position="bottom"
+          animation="fade"
+          theme="transparent"
+          distance={2}
+          key={step.number}
+        >
+          <ListItem >
+            <StepItem step={step} />
+            {steps.length !== index + 1 && <Trail />}
+          </ListItem>
+        </Tooltip>
       ))}
     </ListContainer>
   );
