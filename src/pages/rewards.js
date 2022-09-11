@@ -11,7 +11,7 @@ import Tabs from "../components/ui/Tabs/Tabs";
 import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 
 // redux
-import { getAllRewards, getUserRewards } from "../store/actions/reward.action";
+import { getAllRewards } from "../store/actions/reward.action";
 import Loading from "../components/loading/loading";
 
 const tabs = [

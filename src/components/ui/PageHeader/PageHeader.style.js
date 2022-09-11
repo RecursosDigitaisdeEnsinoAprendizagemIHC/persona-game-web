@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Tooltip } from 'react-tippy';
+
 
 export const TooltipContainer = styled.div`
   height: 100%;
