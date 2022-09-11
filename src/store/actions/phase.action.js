@@ -9,10 +9,15 @@ export const getAllPhases = () => {
       const token = getState().user.userToken;
       const phases = await getPhasesList(token);
       dispatch({ type: GET_ALL_PHASES, phases });
+      dispatch({ type: 'SET_LOADING', isLoading: true });
       toast.success('Fases carregadas com sucesso.');
     } catch (err) {
       toast.error(err?.response?.data?.error?.message);
       return Promise.reject(err);
     }
+    setTimeout(() => { 
+      dispatch({ type: 'SET_LOADING', isLoading: false });
+    }, 500);
+  
   };
 };

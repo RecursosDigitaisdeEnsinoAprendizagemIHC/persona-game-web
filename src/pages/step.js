@@ -17,13 +17,14 @@ import {
   startNewStep,
 } from "../store/actions/step.action";
 import { getAllPhases } from "../store/actions/phase.action";
+import Loading from "../components/loading/loading";
 
 const Step = (props) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [finishedModalOpen, setFinishedModalOpen] = useState(false);
   const [startDate, setStartDate] = useState(null);
-
+  const isLoading = useSelector((state) => state.loading.isLoading);
   const dispatch = useDispatch();
   const router = useRouter();
   const stepNumber = props.router.query.stepNumber;
@@ -85,34 +86,37 @@ const Step = (props) => {
   };
 
   return (
-    <Container>
-      <QuestionAnswerModal
-        data={questionAnswer}
-        open={modalOpen}
-        onContinue={continueModal}
-        onClose={() => {}}
-      />
-      {finishedModalOpen && (
-        <FinishedStepModal
-          data={finishedStep}
-          open={finishedModalOpen}
-          onContinue={completedStepHandler}
-          onClose={() => {}}
-        />
-      )}
+    <>
+        <Container>
+          <QuestionAnswerModal
+            data={questionAnswer}
+            open={modalOpen}
+            onContinue={continueModal}
+            onClose={() => {}}
+          />
+          {finishedModalOpen && (
+            <FinishedStepModal
+              data={finishedStep}
+              open={finishedModalOpen}
+              onContinue={completedStepHandler}
+              onClose={() => {}}
+            />
+          )}
 
-      {questions[questionIndex] && startDate && (
-        <Questions
-          questions={questions}
-          questionNumber={questionIndex + 1}
-          selectedQuestion={questions[questionIndex]}
-          startDate={startDate}
-          onConfirm={nextQuestionHandler}
-          onPrevious={previousQuestionHandler}
-          onFail={failStepHandler}
-        />
-      )}
-    </Container>
+          {questions[questionIndex] && startDate && (
+            <Questions
+              questions={questions}
+              questionNumber={questionIndex + 1}
+              selectedQuestion={questions[questionIndex]}
+              startDate={startDate}
+              onConfirm={nextQuestionHandler}
+              onPrevious={previousQuestionHandler}
+              onFail={failStepHandler}
+            />
+          )}
+        </Container>
+        {isLoading &&  <Loading />}
+    </>
   );
 };
 

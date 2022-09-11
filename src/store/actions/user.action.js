@@ -8,9 +8,13 @@ export const addUserToken = () => {
     try {
       const token = await authenticate();
       dispatch({ type: ADD_USER_TOKEN, token });
+      dispatch({ type: 'SET_LOADING', isLoading: true });
     } catch (err) {
       toast.error(err?.response?.data?.error?.message);
       return Promise.reject(err);
     }
+    setTimeout(() => { 
+      dispatch({ type: 'SET_LOADING', isLoading: false });
+    }, 500);
   };
 };
