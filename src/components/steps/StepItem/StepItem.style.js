@@ -8,7 +8,7 @@ export const Step = styled.div`
   height: 60px;
 
   border-radius: 50%;
-  border: 3px solid ${(props) => props.theme.primary};
+  border: 3px solid ${(props) => props.locked ? '#828282' : props.theme.primary};
   box-sizing: border-box;
 
   font-size: 24px;
@@ -17,6 +17,6 @@ export const Step = styled.div`
   cursor: pointer;
 
   :hover{
-    background-color: rgba(169, 4, 191, 0.15);
+    background-color: ${(props) => !props.locked && 'rgba(169, 4, 191, 0.15)'};
   }
 `;

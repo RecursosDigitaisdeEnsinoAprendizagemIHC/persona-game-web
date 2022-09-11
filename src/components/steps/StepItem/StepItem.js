@@ -22,9 +22,9 @@ const StepItem = ({ step }) => {
   };
 
   return (
-    <Step onClick={() => startStepHandler()}>
+    <Step locked={step.locked} onClick={() => startStepHandler()}>
       {step.locked ? (
-        <FontAwesomeIcon icon={faLock} color={theme.primary} />
+        <FontAwesomeIcon icon={faLock} color={step.locked ? '#828282' : theme.primary} />
       ) : (
         step.number
       )}

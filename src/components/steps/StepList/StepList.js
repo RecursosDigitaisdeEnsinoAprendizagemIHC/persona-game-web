@@ -11,16 +11,16 @@ const StepList = ({ steps }) => {
     <ListContainer>
       {steps.map((step, index) => (
         <Tooltip
-          title={!step.locked && `iniciar fase ${step.number}`}
+          title={step.locked ? 'fase bloqueada' : `iniciar fase ${step.number}`}
           position="bottom"
           animation="fade"
           theme="transparent"
           distance={2}
           key={step.number}
         >
-          <ListItem >
+          <ListItem locked={step.locked}>
             <StepItem step={step} />
-            {steps.length !== index + 1 && <Trail />}
+            {steps.length !== index + 1 && <Trail locked={step.locked}/>}
           </ListItem>
         </Tooltip>
       ))}
