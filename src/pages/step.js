@@ -18,13 +18,14 @@ import {
   startNewStep,
 } from "../store/actions/step.action";
 import { getAllPhases } from "../store/actions/phase.action";
+import Loading from "../components/loading/loading";
 
 const Step = (props) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [finishedModalOpen, setFinishedModalOpen] = useState(false);
   const [startDate, setStartDate] = useState(null);
-
+  const isLoading = useSelector((state) => state.loading.isLoading);
   const dispatch = useDispatch();
   const router = useRouter();
   const stepNumber = props.router.query.stepNumber;
@@ -87,6 +88,7 @@ const Step = (props) => {
   };
 
   return (
+    <>
     <Container>
       {questions.code === undefined ? <><QuestionAnswerModal
         data={questionAnswer}
@@ -116,6 +118,8 @@ const Step = (props) => {
       )}</>: <ModalSystemError openModal error={questions.code} message={questions.message} />}
       
     </Container>
+    {isLoading &&  <Loading />}
+    </>
   );
 };
 

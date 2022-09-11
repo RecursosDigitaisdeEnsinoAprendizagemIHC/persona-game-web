@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Button from '../Button/Button';
 import { Container, Card, Title, CardContent, AlertImg, ButtonGroup} from "./ModalConfirmation.style";
 
-const ModalConfirmation = ({ openModal, handleConfirm}) => {
-    const [isOpen, setIsOpen] = useState(openModal)
+const ModalConfirmation = ({ openModal, setIsOpenModal, handleConfirm}) => {
      return (
         <>
             {
-                isOpen && 
+                openModal && 
                 <Container>
                     <Card>
                         <CardContent>
@@ -17,7 +16,7 @@ const ModalConfirmation = ({ openModal, handleConfirm}) => {
                         </CardContent>
                         <ButtonGroup>
                             <Button
-                                onClick={() => setIsOpen(false)}
+                                onClick={() => setIsOpenModal(false)}
                                 color="secondary"
                                 TooltipText="voltar para tela anterior"
                             >
@@ -25,7 +24,7 @@ const ModalConfirmation = ({ openModal, handleConfirm}) => {
                             </Button>
                             <Button
                                 onClick={() => {
-                                    setIsOpen(false)
+                                    setIsOpenModal(false)
                                     handleConfirm()
                                 }}
                                 color="primary"

@@ -17,8 +17,11 @@ import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 import theme from "../constants/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPhases } from "../store/actions/phase.action";
+import Loading from "../components/loading/loading";
 
 const PhasesMenu = () => {
+
+  const isLoading = useSelector((state) => state.loading.isLoading);
   const phases = useSelector((state) => state.phases.phases);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -37,6 +40,7 @@ const PhasesMenu = () => {
   }
 
   return (
+    <>
     <Container>
       <HeaderContainer>
         <HeaderBtn onClick={()=>goBack()}>
@@ -45,7 +49,10 @@ const PhasesMenu = () => {
         <HeaderTitle>Fases</HeaderTitle>
       </HeaderContainer>
      {phases.code === undefined ? <PhaseList phases={phases} />:<ModalSystemError openModal error={phases.code} message={phases.message} />} 
+    
     </Container>
+    {isLoading &&  <Loading />}
+    </>
   );
 };
 

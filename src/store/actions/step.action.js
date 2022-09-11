@@ -70,9 +70,13 @@ export const failStep = (reason) => {
   return async (dispatch) => {
     try {
       dispatch({ type: FAIL_STEP, reason });
+      dispatch({ type: 'SET_LOADING', isLoading: true });
     } catch (err) {
       return Promise.reject(err);
     }
+    setTimeout(() => { 
+      dispatch({ type: 'SET_LOADING', isLoading: false });
+    }, 500);
   };
 };
 
@@ -80,9 +84,13 @@ export const clearFinishedStep = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: CLEAR_FINISH_STEP });
+      dispatch({ type: 'SET_LOADING', isLoading: true });
     } catch (err) {
       console.error(err);
       return Promise.reject(err);
     }
+    setTimeout(() => { 
+      dispatch({ type: 'SET_LOADING', isLoading: false });
+    }, 500);
   };
 };

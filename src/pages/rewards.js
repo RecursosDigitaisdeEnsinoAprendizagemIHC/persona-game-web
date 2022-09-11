@@ -12,6 +12,7 @@ import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 
 // redux
 import { getAllRewards, getUserRewards } from "../store/actions/reward.action";
+import Loading from "../components/loading/loading";
 
 const tabs = [
   {
@@ -26,6 +27,7 @@ const Rewards = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const rewards = useSelector((state) => state.reward.rewards);
   const userRewards = useSelector((state) => state.reward.userRewards);
+  const isLoading = useSelector((state) => state.loading.isLoading);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -39,6 +41,7 @@ const Rewards = () => {
     router.push("./")
   }
   return (
+    <>
     <Container>
       <PageHeader onBack={() => goBack()} title="Recompensas" />
       {rewards.code === undefined ?  <Tabs
@@ -61,6 +64,9 @@ const Rewards = () => {
       </Tabs>: <ModalSystemError openModal error={rewards.code} message={rewards.message} />}
      
     </Container>
+    
+    {isLoading &&  <Loading />}
+    </>
   );
 };
 
