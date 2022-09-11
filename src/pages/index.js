@@ -8,10 +8,8 @@ import styles from "../styles/pages/menu.module.scss";
 
 export default function Home() {
   return (
-    <>
       <div className={styles.container}>
         <MainMenu />
       </div>
-    </>
   );
 }
