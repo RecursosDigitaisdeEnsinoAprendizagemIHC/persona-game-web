@@ -7,7 +7,8 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 40px;
 
@@ -48,3 +49,16 @@ export const Footer = styled.div`
   margin-right: 30px;
   margin-top: 50px;
 `;
+
+export const ExitButton = styled.button`
+text-align: center;
+  background: none;
+  border: none;
+  font-size: 36px;
+  line-height: 52px;
+  color: ${(props) => props.theme.secondary};
+  font-family: "shrikhand";
+  :hover{
+    color: rgba(3, 49, 140, 0.15);
+  }
+`
