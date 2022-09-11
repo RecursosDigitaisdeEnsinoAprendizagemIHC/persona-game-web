@@ -13,8 +13,11 @@ const initialStete = {
 };
 
 const stepReducer = (state = initialStete, action) => {
+  
   switch (action.type) {
+    
     case START_NEW_STEP:
+      console.log(action.questions)
       state = {
         ...state,
         questions: action.questions,

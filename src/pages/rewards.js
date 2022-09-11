@@ -8,6 +8,7 @@ import PageHeader from "../components/ui/PageHeader/PageHeader";
 import Personas from "../components/ui/rewards/personas/Personas";
 import Medals from "../components/ui/rewards/medals/Medals";
 import Tabs from "../components/ui/Tabs/Tabs";
+import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 
 // redux
 import { getAllRewards, getUserRewards } from "../store/actions/reward.action";
@@ -31,13 +32,16 @@ const Rewards = () => {
 
   useEffect(() => {
     dispatch(getAllRewards());
-    dispatch(getUserRewards());
   }, []);
 
+  const goBack = ()=>{
+    dispatch({ type: 'GET_ALL_REWARDS' , rewards: []});
+    router.push("./")
+  }
   return (
     <Container>
-      <PageHeader onBack={() => router.push("/")} title="Recompensas" />
-      <Tabs
+      <PageHeader onBack={() => goBack()} title="Recompensas" />
+      {rewards.code === undefined ?  <Tabs
         items={tabs}
         value={selectedTab}
         onChange={(newValue) => setSelectedTab(newValue)}
@@ -54,7 +58,8 @@ const Rewards = () => {
             userRewards={userRewards}
           />
         )}
-      </Tabs>
+      </Tabs>: <ModalSystemError openModal error={rewards.code} message={rewards.message} />}
+     
     </Container>
   );
 };

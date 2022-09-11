@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100vh;
   height: 100%;
   z-index: 1001;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  background-color: rgba(229, 229, 229, 0.70);
+  background-color: rgba(229, 229, 229, 0.20);
 `;
 
 export const Card = styled.div`
@@ -21,7 +21,7 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 3px 3px 3px black
+  box-shadow: 3px 3px 3px black;
 `;
 
 export const CardContent = styled.div`

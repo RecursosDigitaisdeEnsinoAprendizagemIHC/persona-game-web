@@ -12,8 +12,9 @@ export const getAllRewards = () => {
       dispatch({ type: GET_ALL_REWARDS, rewards });
       toast.success('Lista Recompensas carregadas com sucesso');
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao buscar recompensas.';
+      dispatch({ type: GET_ALL_REWARDS, rewards:{code, message} });
     }
   };
 };
@@ -26,8 +27,9 @@ export const getUserRewards = () => {
       dispatch({ type: GET_USER_REWARDS, userRewards });
       toast.success('Recompensas carregadas com sucesso');
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao buscar recompensas.';
+      dispatch({ type: GET_USER_REWARDS, userRewards:{code, message} });
     }
   };
 };

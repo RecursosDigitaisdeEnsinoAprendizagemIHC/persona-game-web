@@ -11,6 +11,7 @@ import {
   HeaderContainer,
 } from "../components/ui/phases/Phases.style";
 import PhaseList from "../components/PhaseList/PhaseList";
+import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 
 // constants
 import theme from "../constants/theme";
@@ -26,20 +27,24 @@ const PhasesMenu = () => {
     dispatch(getAllPhases());
   }, []);
 
+  const goBack = ()=>{
+    dispatch({ type: 'GET_ALL_PHASES' });
+    router.push("./")
+  }
+
   if (!phases) {
-    return <div />;
+    return <div/>
   }
 
   return (
     <Container>
       <HeaderContainer>
-        <HeaderBtn onClick={() => router.push("./")}>
+        <HeaderBtn onClick={()=>goBack()}>
           <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
         </HeaderBtn>
         <HeaderTitle>Fases</HeaderTitle>
       </HeaderContainer>
-
-      <PhaseList phases={phases} />
+     {phases.code === undefined ? <PhaseList phases={phases} />:<ModalSystemError openModal error={phases.code} message={phases.message} />} 
     </Container>
   );
 };

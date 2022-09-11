@@ -11,8 +11,9 @@ export const getAllPhases = () => {
       dispatch({ type: GET_ALL_PHASES, phases });
       toast.success('Fases carregadas com sucesso.');
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao buscar Fases.';
+      dispatch({ type: 'GET_ALL_PHASES', phases:{code, message} });
     }
   };
 };

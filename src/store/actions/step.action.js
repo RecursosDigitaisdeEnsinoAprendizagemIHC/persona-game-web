@@ -16,8 +16,9 @@ export const startNewStep = (stepId) => {
       dispatch({ type: START_NEW_STEP, questions });
       toast.success('Questionario iniciado.');
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao iniciar passo.';
+      dispatch({ type: START_NEW_STEP, questions:{code, message} });
     }
   };
 };
@@ -30,8 +31,9 @@ export const setQuestionAnswer = (questionId, answerSent) => {
       const answer = await checkQuestionAnswer(token, questionId, answerSent);
       dispatch({ type: SET_QUESTION_ANSWER, questionId, answerSent, answer });
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao checar resposta.';
+      dispatch({ type: SET_QUESTION_ANSWER, questionId:{code, message} });
     }
   };
 };
@@ -45,8 +47,9 @@ export const finishStep = (stepId) => {
       const stepResult = await checkStepAnswers(token, stepId, answers);
       dispatch({ type: FINISH_STEP, stepId, stepResult });
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao buscar recompensas.';
+      dispatch({ type: FINISH_STEP, stepId:{code, message} });
     }
   };
 };

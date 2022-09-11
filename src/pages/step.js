@@ -7,6 +7,7 @@ import Container from "../components/ui/Container/Container";
 import Questions from "../components/questions/Questions/Questions";
 import QuestionAnswerModal from "../components/ui/modal/QuestionAnswerModal/QuestionAnswerModal";
 import FinishedStepModal from "../components/ui/modal/FinishedStepModal/FinishedStepModal";
+import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
 
 // redux
 import {
@@ -42,6 +43,7 @@ const Step = (props) => {
   }, [questions, startDate]);
 
   useEffect(() => {
+    dispatch({type: 'START_NEW_STEP', questions: []});
     if (stepNumber) {
       dispatch(startNewStep(stepId));
     }
@@ -86,7 +88,7 @@ const Step = (props) => {
 
   return (
     <Container>
-      <QuestionAnswerModal
+      {questions.code === undefined ? <><QuestionAnswerModal
         data={questionAnswer}
         open={modalOpen}
         onContinue={continueModal}
@@ -111,7 +113,8 @@ const Step = (props) => {
           onPrevious={previousQuestionHandler}
           onFail={failStepHandler}
         />
-      )}
+      )}</>: <ModalSystemError openModal error={questions.code} message={questions.message} />}
+      
     </Container>
   );
 };

@@ -9,8 +9,9 @@ export const addUserToken = () => {
       const token = await authenticate();
       dispatch({ type: ADD_USER_TOKEN, token });
     } catch (err) {
-      toast.error(err?.response?.data?.error?.message);
-      return Promise.reject(err);
+      const code = err?.response?.data?.error?.code ?? 500;
+      const message = err?.response?.data?.error?.message ?? 'Erro ao autenticar.';
+      dispatch({ type: ADD_USER_TOKEN, token:{code, message} });
     }
   };
 };
