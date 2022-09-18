@@ -18,7 +18,7 @@ export const startNewStep = (stepId) => {
     } catch (err) {
       const code = err?.response?.data?.error?.code ?? 500;
       const message = err?.response?.data?.error?.message ?? 'Erro ao iniciar passo.';
-      dispatch({ type: START_NEW_STEP, questions:{code, message} });
+      dispatch({ type: 'CHECK_ERROR', error:{code, message} });
     }
   };
 };
@@ -33,7 +33,8 @@ export const setQuestionAnswer = (questionId, answerSent) => {
     } catch (err) {
       const code = err?.response?.data?.error?.code ?? 500;
       const message = err?.response?.data?.error?.message ?? 'Erro ao checar resposta.';
-      dispatch({ type: SET_QUESTION_ANSWER, questionId:{code, message} });
+      // dispatch({ type: SET_QUESTION_ANSWER, questionId, answerSent, error: {code, message} });
+      dispatch({ type: 'CHECK_ERROR', error:{code, message} });
     }
   };
 };
@@ -49,7 +50,7 @@ export const finishStep = (stepId) => {
     } catch (err) {
       const code = err?.response?.data?.error?.code ?? 500;
       const message = err?.response?.data?.error?.message ?? 'Erro ao buscar recompensas.';
-      dispatch({ type: FINISH_STEP, stepId:{code, message} });
+      dispatch({ type: 'CHECK_ERROR', error:{code, message} });
     }
   };
 };

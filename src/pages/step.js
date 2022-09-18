@@ -31,12 +31,14 @@ const Step = (props) => {
   const stepNumber = props.router.query.stepNumber;
   const stepId = props.router.query.stepId;
   const questions = useSelector((state) => state.step.questions);
-  const questionAnswer = useSelector((state) =>
-    state.step.answeredQuestions.find(
+  const sistemError = useSelector((state) => state.step.error)
+  const questionAnswer = useSelector((state) =>{
+    return state.step.answeredQuestions.find(
       (questionAnswer) =>
         questionAnswer.questionId === questions[questionIndex].id
-    )
+    )}
   );
+
   const finishedStep = useSelector((state) => state.step.finishedStep);
 
   useEffect(() => {
@@ -44,11 +46,11 @@ const Step = (props) => {
   }, [questions, startDate]);
 
   useEffect(() => {
-    dispatch({type: 'START_NEW_STEP', questions: []});
     if (stepNumber) {
       dispatch(startNewStep(stepId));
     }
   }, [stepNumber]);
+
 
   useEffect(() => {
     if (finishedStep) {
@@ -61,7 +63,7 @@ const Step = (props) => {
     setQuestionIndex((curIndex) => curIndex - 1);
   };
 
-  const nextQuestionHandler = (answer) => {
+  const nextQuestionHandler =  (answer) => {
     dispatch(setQuestionAnswer(questions[questionIndex].id, answer));
     setModalOpen(true);
   };
@@ -89,8 +91,11 @@ const Step = (props) => {
 
   return (
     <>
+
     <Container>
-      {questions.code === undefined ? <><QuestionAnswerModal
+      {sistemError === undefined ?
+      <>
+      <QuestionAnswerModal
         data={questionAnswer}
         open={modalOpen}
         onContinue={continueModal}
@@ -104,7 +109,7 @@ const Step = (props) => {
           onClose={() => {}}
         />
       )}
-
+  
       {questions[questionIndex] && startDate && (
         <Questions
           questions={questions}
@@ -115,7 +120,10 @@ const Step = (props) => {
           onPrevious={previousQuestionHandler}
           onFail={failStepHandler}
         />
-      )}</>: <ModalSystemError openModal error={questions.code} message={questions.message} />}
+      )}
+      </>
+      :  <ModalSystemError openModal error={sistemError.code} message={sistemError.message} />}
+      
       
     </Container>
     {isLoading &&  <Loading />}

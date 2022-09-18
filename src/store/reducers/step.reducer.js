@@ -17,7 +17,7 @@ const stepReducer = (state = initialStete, action) => {
   switch (action.type) {
     
     case START_NEW_STEP:
-      console.log(action.questions)
+
       state = {
         ...state,
         questions: action.questions,
@@ -27,7 +27,7 @@ const stepReducer = (state = initialStete, action) => {
       const questionAnswer = {
         questionId: action.questionId,
         answerSent: action.answerSent,
-        answer: action.answer,
+        answer: action.answer
       };
       const alreadySaved = state.answeredQuestions.find(
         (item) => item.questionId === questionAnswer.questionId
@@ -57,6 +57,12 @@ const stepReducer = (state = initialStete, action) => {
           reason: action.reason,
         },
         answeredQuestions: [],
+      };
+      break;
+    case 'CHECK_ERROR':
+      state = {
+        ...state,
+        error: action.error
       };
       break;
     case CLEAR_FINISH_STEP:

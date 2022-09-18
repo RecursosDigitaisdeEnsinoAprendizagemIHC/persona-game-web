@@ -65,7 +65,7 @@ const MedalsList = ({ userHasReward }) => {
 };
 
 const Medals = ({ rewards, userRewards }) => {
-  console.log(rewards);
+
   return (
     <Container>
       {rewards.map((reward) => (

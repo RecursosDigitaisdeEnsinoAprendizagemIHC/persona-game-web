@@ -23,7 +23,8 @@ const CORRECT_MESSAGE = "Parabéns! Você acertou.";
 const WRONG_MESSAGE = "Que pena, voce não acertou :(";
 
 const QuestionAnswerModal = ({ data, open, onClose, onContinue }) => {
-  if (!data) return <div />;
+
+  if (!data || data.error) return <div />;
   const { correct, reason } = data.answer;
   const continueHandler = () => {
     onClose();

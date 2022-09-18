@@ -16,9 +16,12 @@ import Button from "../../Button/Button";
 import MCOptions from "../MCOptions/MCOptions";
 import ModalConfirmation from "../../ModalConformation/ModalConformation";
 
+
 const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [isconfirmModal, setIsconfirmModal] = useState(false);
+
+
   const router = useRouter();
 
   const confirmHandler = () => {
