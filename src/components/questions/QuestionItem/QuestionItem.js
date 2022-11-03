@@ -34,11 +34,11 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
       <Container>
         <Header>
           <Tooltip
-              title="sair do questionario"
+              title="Sair do questionario"
               position="bottom"
               animation="fade"
               theme="transparent"
-              distance={0}
+              distance={2}
             >
               <ExitButton onClick={() => setIsconfirmModal(true)}>Sair</ExitButton>
             </Tooltip>
@@ -73,6 +73,7 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
             onClick={() => onPrevious()}
             color="secondary"
             disabled={questionNumber === 1}
+            TooltipText='Questão anterior'
           >
             {"<"} Anterior
           </Button>
@@ -80,6 +81,7 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
             onClick={() => confirmHandler()}
             color={selectedAnswer ? "primary" : "lightGray"}
             disabled={!selectedAnswer}
+            TooltipText='Confirmar resposta'
           >
             Confirmar
           </Button>

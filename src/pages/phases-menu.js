@@ -12,7 +12,7 @@ import {
 } from "../components/ui/phases/Phases.style";
 import PhaseList from "../components/PhaseList/PhaseList";
 import ModalSystemError from "../components/ModalSystemError/ModalSystemError";
-
+import { Tooltip } from 'react-tippy';
 // constants
 import theme from "../constants/theme";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,9 +43,19 @@ const PhasesMenu = () => {
     <>
     <Container>
       <HeaderContainer>
-        <HeaderBtn onClick={()=>goBack()}>
-          <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
-        </HeaderBtn>
+      
+          <HeaderBtn onClick={()=>goBack()}>
+          <Tooltip
+          title={'Voltar para página principal'}
+          position="bottom"
+          animation="fade"
+          theme="transparent"
+          distance={2}
+        >
+            <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
+            </Tooltip>
+          </HeaderBtn>
+        
         <HeaderTitle>Fases</HeaderTitle>
       </HeaderContainer>
      {phases.code === undefined ? <PhaseList phases={phases} />:<ModalSystemError openModal error={phases.code} message={phases.message} />} 

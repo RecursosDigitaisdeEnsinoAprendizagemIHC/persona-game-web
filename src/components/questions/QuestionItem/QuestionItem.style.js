@@ -59,6 +59,7 @@ text-align: center;
   color: ${(props) => props.theme.secondary};
   font-family: "shrikhand";
   :hover{
-    color: rgba(3, 49, 140, 0.15);
+    color: rgba(3, 49, 140, 0.40);
+    cursor: pointer;
   }
 `

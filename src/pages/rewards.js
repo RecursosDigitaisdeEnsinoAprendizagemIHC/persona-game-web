@@ -17,9 +17,11 @@ import Loading from "../components/loading/loading";
 const tabs = [
   {
     name: "Personas",
+    tooltipText: 'Minhas personas',
   },
   {
     name: "Medalhas",
+    tooltipText: 'Minhas medalhas',
   },
 ];
 

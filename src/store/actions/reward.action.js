@@ -11,7 +11,7 @@ export const getAllRewards = () => {
       const rewards = await getRewardList(token);
       dispatch({ type: GET_ALL_REWARDS, rewards });
       dispatch({ type: 'SET_LOADING', isLoading: true });
-      toast.success('Lista Recompensas carregadas com sucesso');
+      toast.success('Lista recompensas carregadas com sucesso');
     } catch (err) {
       const code = err?.response?.data?.error?.code ?? 500;
       const message = err?.response?.data?.error?.message ?? 'Erro ao buscar recompensas.';

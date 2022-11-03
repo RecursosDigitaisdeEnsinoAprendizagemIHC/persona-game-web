@@ -28,7 +28,10 @@ export const OptionContainer = styled.div`
   gap: 5px;
   cursor: pointer;
   padding: 5px;
-
+  :hover{
+    background-color: rgba(169, 4, 191, 0.40);
+    border-radius: 10px;
+  }
   ${(props) =>
     props.selected &&
     css`
@@ -49,7 +52,7 @@ export const Option = styled.div`
   font-size: 18px;
   color: ${(props) => props.theme.primary};
   :hover{
-    background-color: rgba(169, 4, 191, 0.15);
+    background-color: rgba(169, 4, 191, 0.40);
   }
 `;
 

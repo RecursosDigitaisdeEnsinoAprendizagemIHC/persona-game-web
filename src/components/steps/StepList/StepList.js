@@ -11,7 +11,7 @@ const StepList = ({ steps }) => {
     <ListContainer>
       {steps.map((step, index) => (
         <Tooltip
-          title={step.locked ? 'fase bloqueada' : `iniciar fase ${step.number}`}
+          title={step.locked ? 'Fase bloqueada' : `Iniciar fase ${step.number}`}
           position="bottom"
           animation="fade"
           theme="transparent"

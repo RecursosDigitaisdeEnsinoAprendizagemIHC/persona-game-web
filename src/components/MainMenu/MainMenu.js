@@ -12,7 +12,7 @@ const MainMenu = () => {
   return (
     <MainMenuContainer>
       <Tooltip
-        title="Apresenta o um resumo do conteudo exigido para o jogo"
+        title="Resumo do conteúdo exigido para o jogo"
         position="bottom"
         animation="fade"
         theme="transparent"
