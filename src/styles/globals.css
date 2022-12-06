@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 html {
-  font-family: "shrikhand";
+  font-family: "arial";
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: "shrikhand";
+  font-family: "arial";
 }
 
 body > div:first-child,

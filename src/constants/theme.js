@@ -1,10 +1,10 @@
 export default {
-  primary: "#A904BF",
-  secondary: "#03318C",
+  primary: "#134AC0",
+  secondary: "#000",
   darkBlue: "#021F59",
   lightBlue: "#05C7F2",
   lightGreen: "#04D9D9",
-  lightGray: "#828282",
+  lightGray: "#CDCDCD",
   success: "#007E33",
   error: "#CC0000",
 };
