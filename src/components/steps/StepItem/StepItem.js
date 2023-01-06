@@ -24,7 +24,7 @@ const StepItem = ({ step }) => {
   return (
     <Step locked={step.locked} onClick={() => startStepHandler()}>
       {step.locked ? (
-        <FontAwesomeIcon icon={faLock} color={step.locked ? '#828282' : theme.primary} />
+        <FontAwesomeIcon icon={faLock} color={theme.primary} />
       ) : (
         step.number
       )}

@@ -7,4 +7,5 @@ export default {
   lightGray: "#CDCDCD",
   success: "#007E33",
   error: "#CC0000",
+  black: "#323232",
 };

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: process.env.BACKEND_ENDPOINT,
+  baseURL: "http://localhost:8000",
 });
 
 export const getHeader = (token) => {

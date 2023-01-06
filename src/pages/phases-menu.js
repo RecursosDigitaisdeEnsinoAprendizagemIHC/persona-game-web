@@ -43,7 +43,7 @@ const PhasesMenu = () => {
     <>
     <Container>
       <HeaderContainer>
-      
+
           <HeaderBtn onClick={()=>goBack()}>
           <Tooltip
           title={'Voltar para página principal'}
@@ -55,11 +55,11 @@ const PhasesMenu = () => {
             <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
             </Tooltip>
           </HeaderBtn>
-        
-        <HeaderTitle>Fases</HeaderTitle>
+
+        <HeaderTitle>FASES</HeaderTitle>
       </HeaderContainer>
      {phases.code === undefined ? <PhaseList phases={phases} />:<ModalSystemError openModal error={phases.code} message={phases.message} />} 
-    
+
     </Container>
     {isLoading &&  <Loading />}
     </>

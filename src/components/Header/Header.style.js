@@ -15,5 +15,5 @@ export const HeaderTitle = styled.p`
   font-size: 32px;
   line-height: 47px;
   color: #ffffff;
-  text-shadow: 0px 0px 22px rgba(5, 199, 242, 0.74);
+  font-weight: bold;
 `;

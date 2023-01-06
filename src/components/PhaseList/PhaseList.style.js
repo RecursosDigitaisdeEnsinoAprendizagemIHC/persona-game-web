@@ -4,5 +4,6 @@ export const Title = styled.div`
   margin-top: 30px;
   font-size: 36px;
   line-height: 52px;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.black};
+  text-align: center;
 `;

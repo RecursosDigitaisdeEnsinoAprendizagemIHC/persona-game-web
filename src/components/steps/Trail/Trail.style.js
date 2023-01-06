@@ -11,5 +11,5 @@ export const TrailItem = styled.div`
   height: 8px;
 
   border-radius: 50%;
-  background-color: ${(props) => props.locked ? '#828282' : props.theme.primary};
+  background-color: ${(props) => props.theme.primary};
 `;
