@@ -27,20 +27,18 @@ export const ItemDot = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   padding-left: 30px;
-
-
 `;
 
 export const ContentTitle = styled.span`
-  font-size: 18px;
+  font-size: 20px;
   line-height: 26px;
   color: ${(props) => props.theme.secondary};
 `;
 
 export const ContentDescription = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   color: ${(props) => props.theme.primary};
 `;
