@@ -1,26 +1,24 @@
 import styled from "styled-components";
 
 export const ItemContainer = styled.div`
-  width: 200px;
-  height: 190px;
+  width: 220px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 13px;
+  gap: 18px;
+  padding: 24px 34px;
+  border-radius: 8px;
+
   cursor: pointer;
 
-  :hover{
-    background-color: rgba(169, 4, 191, 0.15);
-  }
-  border: 6px solid ${(props) => props.theme.primary};
   box-sizing: border-box;
-  box-shadow: 0px 0px 22px rgba(169, 4, 191, 0.74);
   background: #ffffff;
+
+  background: ${(props) => props.theme.primary};
 `;
 
 export const ItemText = styled.span`
-  font-size: 30px;
+  font-size: 24px;
   line-height: 44px;
-  color: ${(props) => props.theme.primary};
+  color: white;
+  font-weight: bold;
 `;

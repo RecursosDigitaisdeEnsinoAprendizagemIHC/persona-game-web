@@ -1,5 +1,4 @@
 import { authenticate } from "../../services/auth.service";
-import { toast } from 'react-toastify';
 
 export const ADD_USER_TOKEN = "ADD_USER_TOKEN";
 

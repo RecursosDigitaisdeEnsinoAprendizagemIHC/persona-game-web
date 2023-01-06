@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { ToastContainer } from 'react-toastify'
+import { useRouter } from 'next/router'
 import 'react-toastify/dist/ReactToastify.min.css'
 import 'react-tippy/dist/react-tippy';
 import 'react-tippy/dist/tippy.css'
@@ -31,7 +32,11 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
+const HOME_PATHNAME = '/'
+
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -43,9 +48,9 @@ function MyApp({ Component, pageProps }) {
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
             />
           </Head>
-          <Header />
+          {router.pathname !== HOME_PATHNAME && <Header />}
           <Component {...pageProps} />
-          <ToastContainer />          
+          <ToastContainer />
         </AppWrapper>
       </ThemeProvider>
     </Provider>
