@@ -7,10 +7,7 @@ import MainMenuItem from "../MainMenuItem/MainMenuItem";
 import {
   MainMenuContainer,
   MenuGamePresentation,
-  MenuActions,
-  SettingsButton,
-  HelpButton,
-  MenuActionsOptions
+  MenuActions
 } from "./MainMenu.style";
 
 const MainMenu = () => {
@@ -24,53 +21,45 @@ const MainMenu = () => {
         <img src="/personas.png" alt="" />
       </MenuGamePresentation>
       <MenuActions>
-        <SettingsButton>
-          <img src="/settings.svg" alt="" />
-        </SettingsButton>
-        <MenuActionsOptions>
-          <Tooltip
-            title="Resumo do conteúdo exigido para o jogo"
-            position="bottom"
-            animation="fade"
-            theme="transparent"
-            distance={2}
-          >
-            <MainMenuItem
-              icon={faBook}
-              name="Conteúdo"
-              onClick={() => router.push("/summary")}
-            />
-          </Tooltip>
-          <Tooltip
-            title="Iniciar jogo"
-            position="bottom"
-            animation="fade"
-            theme="transparent"
-            distance={2}
-          >
-            <MainMenuItem
-              icon={faPlay}
-              name="Jogar"
-              onClick={() => router.push("/phases-menu")}
-            />
-          </Tooltip>
-          <Tooltip
-            title="Exibir seus prêmios"
-            position="bottom"
-            animation="fade"
-            theme="transparent"
-            distance={2}
-          >
-            <MainMenuItem
-              icon={faTrophy}
-              name="Prêmios"
-              onClick={() => router.push("/rewards")}
-            />
-          </Tooltip>
-        </MenuActionsOptions>
-        <HelpButton>
-          <img src="/help.svg" alt="" />
-        </HelpButton>
+        <Tooltip
+          title="Resumo do conteúdo exigido para o jogo"
+          position="bottom"
+          animation="fade"
+          theme="transparent"
+          distance={2}
+        >
+          <MainMenuItem
+            icon={faBook}
+            name="Conteúdo"
+            onClick={() => router.push("/summary")}
+          />
+        </Tooltip>
+        <Tooltip
+          title="Iniciar jogo"
+          position="bottom"
+          animation="fade"
+          theme="transparent"
+          distance={2}
+        >
+          <MainMenuItem
+            icon={faPlay}
+            name="Jogar"
+            onClick={() => router.push("/phases-menu")}
+          />
+        </Tooltip>
+        <Tooltip
+          title="Exibir seus prêmios"
+          position="bottom"
+          animation="fade"
+          theme="transparent"
+          distance={2}
+        >
+          <MainMenuItem
+            icon={faTrophy}
+            name="Prêmios"
+            onClick={() => router.push("/rewards")}
+          />
+        </Tooltip>
       </MenuActions>
     </MainMenuContainer>
   );

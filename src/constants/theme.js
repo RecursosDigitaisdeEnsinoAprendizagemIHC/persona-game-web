@@ -8,4 +8,5 @@ export default {
   success: "#007E33",
   error: "#CC0000",
   black: "#323232",
+  white: "#fff",
 };

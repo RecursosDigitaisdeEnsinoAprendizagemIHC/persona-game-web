@@ -31,24 +31,7 @@ export const MenuActions = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 24px;
-`;
-
-export const SettingsButton = styled.button``;
-
-export const HelpButton = styled.button`
-  background: ${(props) => props.theme.primary};
-  border-radius: 4px;
-  width: 56px;
-  height: 40px;
-`;
-
-export const MenuActionsOptions = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 64px;
   align-items: center;
-`
+`;

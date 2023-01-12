@@ -1,12 +1,16 @@
 import React from "react";
 
-import { HeaderContainer, HeaderTitle } from "./Header.style";
+import { HeaderContainer, HeaderTitle, HeaderSpace } from "./Header.style";
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <HeaderTitle>Persona Design Game</HeaderTitle>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <HeaderTitle>Persona Design Game</HeaderTitle>
+      </HeaderContainer>
+
+      <HeaderSpace/>
+    </>
   );
 };
 

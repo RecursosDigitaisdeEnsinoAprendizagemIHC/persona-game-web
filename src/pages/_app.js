@@ -14,6 +14,7 @@ import theme from "../constants/theme";
 import "../styles/globals.css";
 import Header from "../components/Header/Header";
 import AppWrapper from "../components/AppWrapper/AppWrapper";
+import FixedButtons from "../components/FixedButtons/FixedButtons";
 
 // redux
 import userReducer from "../store/reducers/user.reducer";
@@ -50,6 +51,7 @@ function MyApp({ Component, pageProps }) {
           </Head>
           {router.pathname !== HOME_PATHNAME && <Header />}
           <Component {...pageProps} />
+          <FixedButtons />
           <ToastContainer />
         </AppWrapper>
       </ThemeProvider>
