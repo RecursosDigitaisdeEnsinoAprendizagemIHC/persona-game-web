@@ -19,8 +19,6 @@ export const TooltipContainer = styled.div`
   }
 `;
 
-
-
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -28,14 +26,16 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 40px;
+
   h2{
-    color: ${(props) => props.theme.primary};
+    color: ${(props) => props.theme.black};
     text-align: center;
     width: 100%;
     margin-right:15%;
     z-index: -1;
 
-    font-size: 36px;
+    font-weight: 400;
+    font-size: 48px;
     line-height: 52px;
   }
 `;

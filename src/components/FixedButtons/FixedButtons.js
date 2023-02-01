@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { SettingsIcon } from "../../../public/settings";
 
@@ -8,9 +9,11 @@ import {
 } from "./FixedButtons.style";
 
 const FixedButtons = () => {
+  const router = useRouter();
+
   return (
     <FixedButtonsContainer>
-      <SettingsButton>
+      <SettingsButton onClick={() => router.push("/settings")}>
         <SettingsIcon />
       </SettingsButton>
       <HelpButton>

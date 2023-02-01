@@ -21,7 +21,6 @@ const PageHeader = ({ onBack, title }) => {
         >
           <span onClick={() => onBack()}>
             <FontAwesomeIcon icon={faArrowLeft} size="3x" color={theme.primary} />
-            <h3>Voltar</h3>
           </span>
         </Tooltip>
       </TooltipContainer>
