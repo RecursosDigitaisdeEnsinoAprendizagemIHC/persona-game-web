@@ -21,6 +21,7 @@ import userReducer from "../store/reducers/user.reducer";
 import phaseReducer from "../store/reducers/phase.reducer";
 import stepReducer from "../store/reducers/step.reducer";
 import rewardReducer from "../store/reducers/reward.reducer";
+import preferencesReducer from "../store/reducers/preferences.reducer";
 import loadingReducer from "../store/reducers/loading.reducer";
 
 const rootReducer = combineReducers({
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   phases: phaseReducer,
   step: stepReducer,
   reward: rewardReducer,
+  preferences: preferencesReducer,
   loading: loadingReducer,
 });
 
