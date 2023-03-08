@@ -22,7 +22,7 @@ export const TextContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) => props.theme.secondary};
 `;

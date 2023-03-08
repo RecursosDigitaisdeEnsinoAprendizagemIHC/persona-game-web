@@ -35,7 +35,7 @@ export const HeaderContainer = styled.div`
     z-index: -1;
 
     font-weight: 400;
-    font-size: 48px;
+    font-size: 3rem;
     line-height: 52px;
   }
 `;

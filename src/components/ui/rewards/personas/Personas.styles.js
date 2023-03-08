@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Title = styled.div`
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 35px;
   color: ${(props) => props.theme.primary};
   margin-top: 20px;
@@ -105,13 +105,13 @@ export const RewardIcon = styled.div`
 `;
 
 export const RewardName = styled.span`
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 21px;
   color: ${(props) => props.theme.secondary};
 `;
 
 export const RewardText = styled.span`
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 21px;
   color: ${(props) => props.theme.primary};
 `;

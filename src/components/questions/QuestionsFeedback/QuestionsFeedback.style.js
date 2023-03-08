@@ -11,7 +11,7 @@ export const Container = styled.div`
   border-left: 3px solid ${(props) => props.theme.primary};
 `;
 
-export const QuestionItem = styled.div`
+export const QuestionItem = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,12 +39,12 @@ export const QuestionItem = styled.div`
       color: #ffffff;
     `};
 
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
 `;
 
 export const CountdownText = styled.span`
-  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 52px;
   color: ${(props) => (props.fail ? props.theme.error : props.theme.primary)};
 `;

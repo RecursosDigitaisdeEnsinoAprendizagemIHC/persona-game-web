@@ -13,7 +13,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderTitle = styled.p`
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 47px;
   color: ${(props) => props.theme.white};
   font-weight: bold;

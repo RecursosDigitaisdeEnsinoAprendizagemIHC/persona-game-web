@@ -14,7 +14,7 @@ export const Header = styled.div`
 
   span {
     text-align: center;
-    font-size: 36px;
+    font-size: 2.25rem;
     line-height: 52px;
     color: ${(props) => props.theme.secondary};
   }
@@ -30,13 +30,13 @@ export const Header = styled.div`
 `;
 
 export const QuestionNumber = styled.span`
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 35px;
   color: ${(props) => props.theme.secondary};
 `;
 
 export const QuestionText = styled.span`
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) => props.theme.primary};
 `;
@@ -54,7 +54,7 @@ export const ExitButton = styled.button`
 text-align: center;
   background: none;
   border: none;
-  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 52px;
   color: ${(props) => props.theme.secondary};
   font-family: "shrikhand";

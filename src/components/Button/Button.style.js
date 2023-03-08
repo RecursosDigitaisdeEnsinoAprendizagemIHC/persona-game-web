@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
   }
 
   font-family: "shrikhand";
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) =>
     props.color ? props.theme[props.color] : props.theme.primary};

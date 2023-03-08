@@ -8,7 +8,7 @@ export const TabContainer = styled.div`
 `;
 
 export const Tab = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) => props.theme.primary};
   cursor: pointer;

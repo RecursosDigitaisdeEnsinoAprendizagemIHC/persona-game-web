@@ -11,7 +11,7 @@ export const Step = styled.div`
   border: 3px solid ${(props) => props.theme.primary};
   box-sizing: border-box;
 
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 35px;
   color: ${(props) => props.theme.primary};
   cursor: pointer;

@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.span`
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   text-align: center;
 
@@ -42,7 +42,7 @@ export const CardIconContainer = styled.div`
 `;
 
 export const Text = styled.span`
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 20px;
   color: ${(props) => props.theme.secondary};
 `;

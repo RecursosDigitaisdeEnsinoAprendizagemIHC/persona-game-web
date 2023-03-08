@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const ItemContainer = styled.div`
-  width: 220px;
+  min-width: 220px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 18px;
   padding: 24px 34px;
   border-radius: 8px;
@@ -11,13 +12,16 @@ export const ItemContainer = styled.div`
   cursor: pointer;
 
   box-sizing: border-box;
-  background: #ffffff;
 
   background: ${(props) => props.theme.primary};
+
+  & > svg {
+    font-size: 32px;
+  }
 `;
 
 export const ItemText = styled.span`
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 44px;
   color: white;
   font-weight: bold;

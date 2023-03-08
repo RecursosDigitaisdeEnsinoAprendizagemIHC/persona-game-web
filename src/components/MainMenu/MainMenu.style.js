@@ -17,11 +17,11 @@ export const MenuGamePresentation = styled.div`
   background: ${(props) => props.theme.primary};
 
   & > h1 {
-    font-size: 44px;
+    font-size: 2.75rem;
   }
 
   & > p {
-    font-size: 20px;
+    font-size: 1.25rem;
     max-width: 350px;
     margin-bottom: 64px;
   }

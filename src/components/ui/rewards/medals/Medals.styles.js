@@ -8,7 +8,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.span`
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 35px;
   color: ${(props) => props.theme.primary};
 `;
@@ -64,7 +64,7 @@ export const MedalContent = styled.div`
 `;
 
 export const MedalText = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) => props.theme.secondary};
 `;

@@ -18,7 +18,7 @@ export const HeaderTitle = styled.div`
   text-align: center;
   margin: 0 0 0 -80px;
 
-  font-size: 48px;
+  font-size: 3rem;
   line-height: 70px;
   color: ${(props) => props.theme.primary};
 `;
