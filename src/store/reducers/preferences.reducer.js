@@ -1,10 +1,10 @@
-import { GET_ALL_PREFERENCES } from "../actions/preferences.action";
+import { EDIT_PREFERENCES, GET_ALL_PREFERENCES } from "../actions/preferences.action";
 
-const initialStete = {
+const initialState = {
   preferences: [],
 };
 
-const preferenceReducer = (state = initialStete, action) => {
+const preferenceReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_PREFERENCES: {
       state = {
@@ -13,6 +13,22 @@ const preferenceReducer = (state = initialStete, action) => {
       };
       break;
     }
+
+    case EDIT_PREFERENCES: {
+      const { preferenceId, value } = action;
+      const preferencesClone = structuredClone(state.preferences)
+
+      preferencesClone
+        .find(pref => pref.id === preferenceId)
+        .value = value
+
+      state = {
+        ...state,
+        preferences: preferencesClone,
+      };
+      break;
+    }
+
     default:
       break;
   }
