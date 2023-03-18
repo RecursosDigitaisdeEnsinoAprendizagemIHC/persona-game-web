@@ -23,4 +23,20 @@ export const Preference = styled.div`
     margin-right: 24px;
     color: ${(props) => props.theme.black}
   }
+
+  & .MuiSwitch-colorPrimary.Mui-checked {
+    color: ${(props) => props.theme.primary};
+  }
+
+  & .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+    background-color: #fafafa;
+  }
+
+  & .MuiInputBase-root, .MuiSelect-icon {
+    color: ${(props) => props.theme.black}
+  }
+
+  & .MuiInput-underline::before {
+  border-bottom: ${(props) => `2px solid ${props.theme.black}`};
+  }
 `;

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { faLock, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactTooltip from "react-tooltip";
+import { ThemeContext } from "styled-components";
 
 // components
 import {
@@ -18,8 +19,6 @@ import {
   RewardText,
   InfoContainer,
 } from "./Personas.styles";
-
-import theme from "../../../../constants/theme";
 
 const groupArrayByTwo = (arr) => {
   const newArr = [];
@@ -40,6 +39,8 @@ const iconsByRewardName = {
 };
 
 const Personas = ({ rewards, userRewards }) => {
+  const theme = useContext(ThemeContext)
+
   if (rewards && rewards.length <= 0) {
     return <div />;
   }

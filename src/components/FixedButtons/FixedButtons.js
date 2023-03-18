@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { useSelector } from "react-redux";
+import { Tooltip } from "react-tippy";
 import { SettingsIcon } from "../../../public/settings";
 
 import {
@@ -10,15 +12,36 @@ import {
 
 const FixedButtons = () => {
   const router = useRouter();
+  const { preferences } = useSelector((state) => state.preferences);
+
+  const highContrast = preferences.find(pref => pref.name === "Auto contraste")
+
+  console.log(highContrast, preferences)
 
   return (
     <FixedButtonsContainer>
-      <SettingsButton onClick={() => router.push("/settings")}>
+      <Tooltip
+        title="Ir para configurações"
+        position="bottom"
+        animation="fade"
+        theme="transparent"
+        distance={2}
+      >
+        <SettingsButton onClick={() => router.push("/settings")}>
         <SettingsIcon />
       </SettingsButton>
-      <HelpButton>
-        <img src="/help.svg" alt="" />
-      </HelpButton>
+      </Tooltip>
+      <Tooltip
+        title="Abrir ajuda"
+        position="bottom"
+        animation="fade"
+        theme="transparent"
+        distance={2}
+      >
+        <HelpButton>
+          <img src="/help.svg" alt="" />
+        </HelpButton>
+      </Tooltip>
     </FixedButtonsContainer>
   );
 };

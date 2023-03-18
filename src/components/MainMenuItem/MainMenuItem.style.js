@@ -13,7 +13,8 @@ export const ItemContainer = styled.div`
 
   box-sizing: border-box;
 
-  background: ${(props) => props.theme.primary};
+  background: ${(props) => props.theme.secondaryBackground};
+  border: 1px solid white;
 
   & > svg {
     font-size: 32px;

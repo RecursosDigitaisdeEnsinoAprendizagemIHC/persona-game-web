@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactTooltip from "react-tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { ThemeContext } from "styled-components";
 
 // components
 import {
@@ -16,8 +17,6 @@ import {
 } from "./Medals.styles";
 import Locked from "../Locked/Locked";
 
-// constants
-import theme from "../../../../constants/theme";
 
 const medalsLevel = {
   bronze: 1,
@@ -65,6 +64,7 @@ const MedalsList = ({ userHasReward }) => {
 };
 
 const Medals = ({ rewards, userRewards }) => {
+  const theme = useContext(ThemeContext)
 
   return (
     <Container>

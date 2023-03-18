@@ -35,7 +35,7 @@ export const QuestionItem = styled.button`
   ${(props) =>
     props.active &&
     css`
-      background: ${(props) => props.theme.primary};
+      background: ${(props) => props.theme.secondaryBackground};
       color: #ffffff;
     `};
 

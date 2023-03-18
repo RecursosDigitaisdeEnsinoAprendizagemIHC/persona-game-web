@@ -1,20 +1,15 @@
 import React from "react";
-import Head from "next/head";
-import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { ToastContainer } from 'react-toastify'
-import { useRouter } from 'next/router'
 import 'react-toastify/dist/ReactToastify.min.css'
 import 'react-tippy/dist/react-tippy';
 import 'react-tippy/dist/tippy.css'
 
-import theme from "../constants/theme";
 import "../styles/globals.css";
-import Header from "../components/Header/Header";
-import AppWrapper from "../components/AppWrapper/AppWrapper";
 import FixedButtons from "../components/FixedButtons/FixedButtons";
+import App from "../components/App/App";
 
 // redux
 import userReducer from "../store/reducers/user.reducer";
@@ -35,28 +30,14 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-const HOME_PATHNAME = '/'
-
 function MyApp({ Component, pageProps }) {
-  const router = useRouter()
-
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <AppWrapper>
-          <Head>
-            <title>Persona Design Game</title>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
-            />
-          </Head>
-          {router.pathname !== HOME_PATHNAME && <Header />}
-          <Component {...pageProps} />
-          <FixedButtons />
-          <ToastContainer />
-        </AppWrapper>
-      </ThemeProvider>
+      <App>
+        <Component {...pageProps} />
+        <FixedButtons />
+        <ToastContainer />
+      </App>
     </Provider>
   );
 }

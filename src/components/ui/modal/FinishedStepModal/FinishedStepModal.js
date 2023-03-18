@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dialog } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,6 +6,7 @@ import {
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import { ThemeContext } from "styled-components";
 
 // components
 import {
@@ -18,8 +19,6 @@ import {
 import Button from "../../../Button/Button";
 import RewardCarousel from "../../../RewardCarousel/RewardCarousel";
 
-// constants
-import theme from "../../../../constants/theme";
 
 const MIN_CORRECT_ANSWERS = 3;
 const SUCCESS_MESSAGE =
@@ -29,6 +28,7 @@ const TIME_OVER_MESSAGE = "O tempo limite da fase se esgotou :(";
 
 const FinishedStepModal = ({ data, open, onClose, onContinue }) => {
   const router = useRouter();
+  const theme = useContext(ThemeContext)
 
   if (!open) return <div />;
 

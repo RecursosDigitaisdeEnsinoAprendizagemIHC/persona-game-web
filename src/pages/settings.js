@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadUserPreferences, updateUserPreferences } from "../store/actions/preferences.action";
+import { updateUserPreferences } from "../store/actions/preferences.action";
 
 import { MenuItem, Select, Switch } from "@material-ui/core";
 import Loading from "../components/loading/loading";
@@ -17,12 +17,7 @@ const Settings = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    dispatch(loadUserPreferences());
-  }, []);
-
-  const goBack = ()=>{
-    dispatch({ type: 'GET_ALL_PREFERENCES' , preferences: []});
+  const goBack = () => {
     router.back()
   }
 

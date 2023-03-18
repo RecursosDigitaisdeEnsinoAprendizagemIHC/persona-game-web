@@ -14,7 +14,7 @@ export const MenuGamePresentation = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  background: ${(props) => props.theme.primary};
+  background: ${(props) => props.theme.secondaryBackground};
 
   & > h1 {
     font-size: 2.75rem;
@@ -34,4 +34,6 @@ export const MenuActions = styled.div`
   justify-content: center;
   gap: 64px;
   align-items: center;
+
+  background: ${(props) => props.theme.primaryBackground};
 `;

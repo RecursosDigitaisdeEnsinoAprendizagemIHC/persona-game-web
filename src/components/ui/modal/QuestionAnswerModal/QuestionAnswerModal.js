@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dialog } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimesCircle,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { ThemeContext } from "styled-components";
 
 // components
 import {
@@ -16,13 +17,12 @@ import {
 } from "./QuestionAnswerModal.style";
 import Button from "../../../Button/Button";
 
-// constants
-import theme from "../../../../constants/theme";
 
 const CORRECT_MESSAGE = "Parabéns! Você acertou.";
 const WRONG_MESSAGE = "Que pena, voce não acertou :(";
 
 const QuestionAnswerModal = ({ data, open, onClose, onContinue }) => {
+  const theme = useContext(ThemeContext)
 
   if (!data || data.error) return <div />;
   const { correct, reason } = data.answer;

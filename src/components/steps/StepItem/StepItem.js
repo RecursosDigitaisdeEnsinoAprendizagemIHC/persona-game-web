@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
@@ -6,11 +6,11 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 // components
 import { Step } from "./StepItem.style";
 
-// constants
-import theme from "../../../constants/theme";
+import { ThemeContext } from "styled-components";
 
 const StepItem = ({ step }) => {
   const router = useRouter();
+  const theme = useContext(ThemeContext)
 
   const startStepHandler = () => {
     if (step.locked) return;

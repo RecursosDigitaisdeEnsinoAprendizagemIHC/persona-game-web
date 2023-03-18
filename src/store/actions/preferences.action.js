@@ -5,10 +5,12 @@ import { editUserPreferences, getUserPreferences } from "../../services/preferen
 export const GET_ALL_PREFERENCES = "GET_ALL_PREFERENCES";
 export const EDIT_PREFERENCES = "EDIT_PREFERENCES";
 
-export const loadUserPreferences = () => {
+export const loadUserPreferences = (userToken) => {
   return async (dispatch, getState) => {
     try {
-      const token = getState().user.userToken;
+      const token = getState().user.userToken || userToken;
+
+      console.log(token)
       const preferences = await getUserPreferences(token);
       dispatch({ type: GET_ALL_PREFERENCES, preferences: preferences.preferenceTypes });
       dispatch({ type: 'SET_LOADING', isLoading: true });

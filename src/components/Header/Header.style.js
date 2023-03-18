@@ -7,8 +7,8 @@ export const HeaderContainer = styled.div`
   justify-content: center;
   height: 85px;
   width: 100%;
-  box-shadow: 0px 0px 22px;
-  background: ${(props) => props.theme.primary};
+  box-shadow: ${(props) => `0px 0px 22px ${props.theme.shadowColor}`};
+  background: ${(props) => props.theme.secondaryBackground};
   position: fixed;
 `;
 

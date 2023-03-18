@@ -12,8 +12,9 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
 
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.secondaryBackground};
   color: white;
+  border: 2px solid ${(props) => props.theme.primary};
 
   span {
     padding-left: 20px;

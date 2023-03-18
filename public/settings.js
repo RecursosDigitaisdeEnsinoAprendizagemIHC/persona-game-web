@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import theme from "../src/constants/theme";
+import { useSelector } from "react-redux";
+import { ThemeContext } from 'styled-components'
 
 const HOME_PATHNAME = '/'
 
 export function SettingsIcon() {
   const router = useRouter()
+  const { preferences } = useSelector((state) => state.preferences);
+  const theme = useContext(ThemeContext)
 
-  const iconColor = router.pathname === HOME_PATHNAME ? theme.primary : theme.white
+  const highContrast = preferences.find(pref => pref.name === "Auto contraste")
+
+  const iconColor = router.pathname === HOME_PATHNAME && !Number(highContrast?.value) ? theme.primary : theme.white
 
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

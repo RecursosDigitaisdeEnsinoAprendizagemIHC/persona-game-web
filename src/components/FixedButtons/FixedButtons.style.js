@@ -13,7 +13,8 @@ export const FixedButtonsContainer = styled.div`
 export const SettingsButton = styled.button``;
 
 export const HelpButton = styled.button`
-  background: ${(props) => props.theme.primary};
+  background: ${(props) => props.theme.secondaryBackground};
+  border: 1px solid white;
   border-radius: 4px;
   width: 56px;
   height: 40px;

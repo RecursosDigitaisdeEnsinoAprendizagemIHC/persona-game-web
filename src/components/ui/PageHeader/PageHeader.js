@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from 'react-tippy';
+import { ThemeContext } from "styled-components";
+
 // components
 import { HeaderContainer ,TooltipContainer} from "./PageHeader.style";
 
-// constants
-import theme from "../../../constants/theme";
 
 const PageHeader = ({ onBack, title }) => {
+  const theme = useContext(ThemeContext)
+
   return (
     <HeaderContainer>
       <TooltipContainer>
