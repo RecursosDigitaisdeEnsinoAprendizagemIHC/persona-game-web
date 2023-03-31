@@ -7,8 +7,6 @@ export const Container = styled.div`
   gap: 30px;
   min-width: 250px;
   padding-top: 30px;
-
-  border-left: 3px solid ${(props) => props.theme.primary};
 `;
 
 export const QuestionItem = styled.button`
@@ -41,10 +39,4 @@ export const QuestionItem = styled.button`
 
   font-size: 1.125rem;
   line-height: 26px;
-`;
-
-export const CountdownText = styled.span`
-  font-size: 2.25rem;
-  line-height: 52px;
-  color: ${(props) => (props.fail ? props.theme.error : props.theme.primary)};
 `;

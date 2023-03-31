@@ -9,6 +9,7 @@ export const lightTheme = {
   shadowColor: "#000",
   primaryBackground: "#fff",
   secondaryBackground: "#0551a8",
+  questionBackground: "#eee",
 };
 
 export const darkTheme = {
@@ -22,4 +23,5 @@ export const darkTheme = {
   shadowColor: "#fff",
   primaryBackground: "#000",
   secondaryBackground: "#000",
+  questionBackground: "#000",
 };

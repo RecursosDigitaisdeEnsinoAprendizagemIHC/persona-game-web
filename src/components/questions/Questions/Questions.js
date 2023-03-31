@@ -2,11 +2,9 @@ import React from "react";
 
 // components
 import { Container } from "./Questions.style";
-import QuestionsFeedback from "../QuestionsFeedback/QuestionsFeedback";
 import QuestionItem from "../QuestionItem/QuestionItem";
 
 const Questions = ({
-  questions,
   selectedQuestion,
   questionNumber,
   startDate,
@@ -21,10 +19,6 @@ const Questions = ({
         question={selectedQuestion}
         onConfirm={onConfirm}
         onPrevious={onPrevious}
-      />
-      <QuestionsFeedback
-        questions={questions}
-        selectedQuestion={selectedQuestion}
         startDate={startDate}
         onFail={onFail}
       />

@@ -1,26 +1,30 @@
 import React from "react";
 
 // components
-import { Container } from "./TFOptions.style";
-import Button from "../../Button/Button";
+import {
+  Container,
+  Option
+} from "./TFOptions.style";
 
 const TFOptions = ({ selected, setSelected }) => {
   return (
     <Container>
-      <Button
+      <Option
         color="success"
         active={selected === "V"}
         onClick={() => setSelected("V")}
       >
+        <span>A</span>
         Verdadeiro
-      </Button>
-      <Button
+      </Option>
+      <Option
         color="error"
         active={selected === "F"}
         onClick={() => setSelected("F")}
       >
+        <span>B</span>
         Falso
-      </Button>
+      </Option>
     </Container>
   );
 };

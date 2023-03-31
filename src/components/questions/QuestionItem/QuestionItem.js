@@ -2,25 +2,35 @@ import React, { useState } from "react";
 import TFOptions from "../TFOptions/TFOptions";
 import { useRouter } from "next/router";
 import { Tooltip } from 'react-tippy';
+import Countdown from "react-countdown";
 
 // components
 import {
   Container,
   Header,
-  QuestionNumber,
   QuestionText,
   Footer,
   ExitButton,
+  QuestionHeader,
+  CountdownText
 } from "./QuestionItem.style";
 import Button from "../../Button/Button";
 import MCOptions from "../MCOptions/MCOptions";
 import ModalConfirmation from "../../ModalConformation/ModalConformation";
+import { CloseIcon } from "../../../../public/close";
+import { LinearProgress } from "@material-ui/core";
 
+const STEP_MAX_TIME = 5 * 60000;
 
-const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
+const QuestionItem = ({
+  question,
+  questionNumber,
+  onConfirm,
+  startDate,
+  onFail,
+}) => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [isconfirmModal, setIsconfirmModal] = useState(false);
-
 
   const router = useRouter();
 
@@ -29,32 +39,67 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
     onConfirm(selectedAnswer);
   };
 
+  const zeroPadTime = (number) => {
+    return number < 10 ? `0${number}` : number;
+  };
+
+  const countdownRenderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      // trigger step fail with message explaning why
+      return <CountdownText fail>00:00</CountdownText>;
+    } else {
+      return (
+        <CountdownText>
+          {zeroPadTime(minutes)}:{zeroPadTime(seconds)}
+        </CountdownText>
+      );
+    }
+  };
+
   return (
     <>
       <Container>
         <Header>
-          <Tooltip
-              title="Sair do questionario"
-              position="bottom"
-              animation="fade"
-              theme="transparent"
-              distance={2}
-            >
-              <ExitButton onClick={() => setIsconfirmModal(true)}>Sair</ExitButton>
+          <div>
+            <Tooltip
+                title="Sair do questionario"
+                position="bottom"
+                animation="fade"
+                theme="transparent"
+                distance={2}
+              >
+              <ExitButton onClick={() => setIsconfirmModal(true)}>
+                <CloseIcon />
+                Sair
+              </ExitButton>
             </Tooltip>
-            <span>Fase 1 Etapa 1</span>
-            <div />
+            <LinearProgress
+              variant="determinate"
+              value={questionNumber * 20}
+              style={{ width: '85%', height: '12px', borderRadius: '6px' }}
+            />
+            <strong>{questionNumber}/5</strong>
+          </div>
+
+          <div>
+            <span>Conceitos sobre personas</span>
+            <Countdown
+              date={startDate + STEP_MAX_TIME}
+              renderer={countdownRenderer}
+              onComplete={() => onFail("TIME_OVER")}
+            />
+          </div>
         </Header>
 
-        <div>
-          <QuestionNumber>Questão {questionNumber}: </QuestionNumber>
+        <QuestionHeader>
+          {/* <QuestionNumber>Questão {questionNumber}: </QuestionNumber> */}
           <QuestionText>{question.title}</QuestionText>
           {question.description && (
             <QuestionText>
               <div dangerouslySetInnerHTML={{ __html: question.description }} />
             </QuestionText>
           )}
-        </div>
+        </QuestionHeader>
 
         {question.type === "VF" ? (
           <TFOptions selected={selectedAnswer} setSelected={setSelectedAnswer} />
@@ -70,14 +115,6 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
 
         <Footer>
           <Button
-            onClick={() => onPrevious()}
-            color="secondary"
-            disabled={questionNumber === 1}
-            TooltipText='Questão anterior'
-          >
-            {"<"} Anterior
-          </Button>
-          <Button
             onClick={() => confirmHandler()}
             color={selectedAnswer ? "primary" : "lightGray"}
             disabled={!selectedAnswer}
@@ -87,7 +124,12 @@ const QuestionItem = ({ question, questionNumber, onConfirm, onPrevious }) => {
           </Button>
         </Footer>
     </Container>
-    <ModalConfirmation openModal={isconfirmModal} setIsOpenModal={setIsconfirmModal} handleConfirm={() => router.push("/phases-menu")}/>
+
+    <ModalConfirmation
+      openModal={isconfirmModal}
+      setIsOpenModal={setIsconfirmModal}
+      handleConfirm={() => router.push("/phases-menu")}
+    />
     </>
   );
 };

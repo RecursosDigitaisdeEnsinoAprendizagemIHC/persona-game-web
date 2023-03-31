@@ -1,32 +1,44 @@
 import styled from "styled-components";
+import { StyledButton } from "../../Button/Button.style";
 
 export const Container = styled.div`
   padding-right: 30px;
+  width: 100%;
+  margin-top: 40px;
 `;
 
 export const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 40px;
 
+  & > div:first-of-type {
+    margin-bottom: 28px;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & > strong {
+      font-size: 1.25rem;
+      color: ${(props) => props.theme.primary};
+    }
+  }
+
   span {
     text-align: center;
-    font-size: 2.25rem;
-    line-height: 52px;
-    color: ${(props) => props.theme.secondary};
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.shadowColor};
   }
+`;
 
-  span:first-child {
-    width: 20%;
-    cursor: pointer;
-  }
-
-  span:nth-of-type(2n) {
-    width: 80%;
-  }
+export const QuestionHeader = styled.div`
+  padding: 16px 12px;
+  background-color: ${(props) => props.theme.questionBackground};
+  border: 1px solid ${(props) => props.theme.black};
+  border-bottom: none;
 `;
 
 export const QuestionNumber = styled.span`
@@ -38,28 +50,46 @@ export const QuestionNumber = styled.span`
 export const QuestionText = styled.span`
   font-size: 1.125rem;
   line-height: 26px;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.black};
 `;
 
 export const Footer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 50px;
+  justify-content: flex-end;
+  margin-top: 32px;
+
+  & ${StyledButton} {
+    border-radius: 8px;
+    font-family: inherit;
+    height: 40px;
+
+    &:hover {
+      background-color: ${(props) => props.theme.secondaryBackground};
+    }
+
+    &:not(:disabled) {
+      background-color: ${(props) => props.theme.secondaryBackground};
+      color: ${(props) => props.theme.white};
+      border-color: ${(props) => props.theme.primary};
+    }
+  }
 `;
 
 export const ExitButton = styled.button`
-text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   background: none;
   border: none;
-  font-size: 2.25rem;
-  line-height: 52px;
-  color: ${(props) => props.theme.secondary};
-  font-family: "shrikhand";
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.primary};
   :hover{
-    color: rgba(3, 49, 140, 0.40);
     cursor: pointer;
   }
 `
+
+export const CountdownText = styled.span`
+  font-size: 2.25rem;
+  color: ${(props) => (props.fail ? props.theme.error : props.theme.primary)};
+`;
