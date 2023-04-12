@@ -32,9 +32,20 @@ export const Header = styled.div`
     font-size: 1.5rem;
     color: ${(props) => props.theme.shadowColor};
   }
+
+  & .MuiLinearProgress-barColorPrimary {
+    background-color: ${(props) => props.theme.primary};
+  }
+
+  & .MuiLinearProgress-colorPrimary {
+      background-color: #7d7d7d;
+  }
 `;
 
 export const QuestionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 12px;
   background-color: ${(props) => props.theme.questionBackground};
   border: 1px solid ${(props) => props.theme.black};
@@ -62,7 +73,6 @@ export const Footer = styled.div`
   & ${StyledButton} {
     border-radius: 8px;
     font-family: inherit;
-    height: 40px;
 
     &:hover {
       background-color: ${(props) => props.theme.secondaryBackground};

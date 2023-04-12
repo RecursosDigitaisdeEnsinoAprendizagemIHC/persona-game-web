@@ -24,5 +24,5 @@ export const editUserPreferences = async (token, preferenceId, value) => {
 };
 
 export const updateFontSize = (value) => {
-  document.querySelector('html').style.fontSize = `${value*100}%`
+  document.querySelector('html').style.fontSize = `${value * 100}%`
 };

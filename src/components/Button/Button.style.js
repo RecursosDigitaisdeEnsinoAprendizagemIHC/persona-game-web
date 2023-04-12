@@ -1,21 +1,15 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
-  width: 160px;
-  height: 50px;
+  padding: 8px 12px;
 
   border: 2px solid
     ${(props) => (props.color ? props.theme[props.color] : props.theme.primary)};
   box-sizing: border-box;
   border-radius: 20px;
-  background: white;
+  background: ${(props) => props.theme.primaryBackground};
   cursor: pointer;
 
-  :hover{
-    background: ${(props) => props.color === "primary" ? 'rgba(169, 4, 191, 0.40)' : 'rgba(3, 49, 140, 0.40)'};
-  }
-
-  font-family: "shrikhand";
   font-size: 1.125rem;
   line-height: 26px;
   color: ${(props) =>

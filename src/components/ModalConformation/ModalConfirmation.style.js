@@ -1,21 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vh;
-  height: 100%;
+  width: 100%;
+  height: calc(100% - 85px);
   z-index: 1001;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   background-color: rgba(229, 229, 229, 0.15);
+  left: 0;
 `;
 
 export const Card = styled.div`
   width: 500px;
   height: 300px;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: ${(props) => props.theme.primaryBackground};
   z-index: 1002;
   display: flex;
   justify-content: center;
@@ -33,7 +34,7 @@ export const CardContent = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: #03318C;
+  color: ${(props) => props.theme.primary};
   margin-bottom: 8px;
   margin-top: 8px;
 `;

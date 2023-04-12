@@ -33,12 +33,11 @@ export const Content = styled.div`
 
 export const ContentTitle = styled.span`
   font-size: 1.25rem;
-  line-height: 26px;
   color: ${(props) => props.theme.black};
 `;
 
 export const ContentDescription = styled.span`
   font-size: 1rem;
-  line-height: 20px;
   color: ${(props) => props.theme.primary};
+  line-height: 22px;
 `;

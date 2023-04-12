@@ -14,11 +14,15 @@ import {
   QuestionHeader,
   CountdownText
 } from "./QuestionItem.style";
+
 import Button from "../../Button/Button";
 import MCOptions from "../MCOptions/MCOptions";
 import ModalConfirmation from "../../ModalConformation/ModalConformation";
 import { CloseIcon } from "../../../../public/close";
-import { LinearProgress } from "@material-ui/core";
+import { Box, LinearProgress, Modal, Typography } from "@material-ui/core";
+import { TipIcon } from "../../../../public/tip";
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
 
 const STEP_MAX_TIME = 5 * 60000;
 
@@ -31,8 +35,10 @@ const QuestionItem = ({
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [isconfirmModal, setIsconfirmModal] = useState(false);
+  const [openTipModal, setOpenTipModal] = useState(false);
 
   const router = useRouter();
+  const theme = useContext(ThemeContext)
 
   const confirmHandler = () => {
     setSelectedAnswer("");
@@ -54,6 +60,20 @@ const QuestionItem = ({
         </CountdownText>
       );
     }
+  };
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: theme.primaryBackground,
+    border: `2px solid ${theme.white}`,
+    boxShadow: 24,
+    borderRadius: 12,
+    p: 3,
+    color: theme.black
   };
 
   return (
@@ -92,13 +112,25 @@ const QuestionItem = ({
         </Header>
 
         <QuestionHeader>
-          {/* <QuestionNumber>Questão {questionNumber}: </QuestionNumber> */}
-          <QuestionText>{question.title}</QuestionText>
-          {question.description && (
-            <QuestionText>
-              <div dangerouslySetInnerHTML={{ __html: question.description }} />
-            </QuestionText>
-          )}
+          <div>
+            <QuestionText>{question.title}</QuestionText>
+            {question.description && (
+              <QuestionText>
+                <div dangerouslySetInnerHTML={{ __html: question.description }} />
+              </QuestionText>
+            )}
+          </div>
+          <Tooltip
+            title="Exibir dica para pergunta"
+            position="bottom"
+            animation="fade"
+            theme="transparent"
+            distance={2}
+          >
+            <button onClick={() => setOpenTipModal(true)}>
+              <TipIcon />
+            </button>
+          </Tooltip>
         </QuestionHeader>
 
         {question.type === "VF" ? (
@@ -123,13 +155,37 @@ const QuestionItem = ({
             Confirmar
           </Button>
         </Footer>
-    </Container>
+      </Container>
 
-    <ModalConfirmation
-      openModal={isconfirmModal}
-      setIsOpenModal={setIsconfirmModal}
-      handleConfirm={() => router.push("/phases-menu")}
-    />
+      <ModalConfirmation
+        openModal={isconfirmModal}
+        setIsOpenModal={setIsconfirmModal}
+        handleConfirm={() => router.push("/phases-menu")}
+      />
+
+      <Modal
+        open={openTipModal}
+        onClose={() => setOpenTipModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <button
+            style={{ position: 'absolute', right: '20px', top: '20px' }}
+            onClick={() => setOpenTipModal(false)}
+          >
+            <CloseIcon color={theme.black} />
+          </button>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Dica para a pergunta
+          </Typography>
+          {question.questionTips.map(tip => (
+            <Typography key={tip.id} id="modal-modal-description" style={{ marginTop: '16px' }}>
+              {tip.description}
+            </Typography>
+          ))}
+        </Box>
+      </Modal>
     </>
   );
 };

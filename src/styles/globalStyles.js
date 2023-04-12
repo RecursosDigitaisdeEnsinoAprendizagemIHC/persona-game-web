@@ -35,8 +35,28 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-
   .Toastify__toast-container {
     margin-top: 50px;
+  }
+
+  .MuiMenu-paper {
+    top: 430px!important;
+    left: 1068px!important;
+  }
+
+  .MuiSwitch-colorPrimary.Mui-checked {
+    color: ${(props) => props.theme.primary}!important;
+  }
+
+  .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+    background-color: #fafafa!important;
+  }
+
+  .MuiInputBase-root, .MuiSelect-icon {
+    color: ${(props) => props.theme.black}!important;
+  }
+
+  .MuiInput-underline::before {
+    border-bottom: ${(props) => `2px solid ${props.theme.black}`}!important;
   }
 `;

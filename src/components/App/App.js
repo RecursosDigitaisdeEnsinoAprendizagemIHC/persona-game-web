@@ -14,6 +14,7 @@ import { darkTheme, lightTheme } from "../../constants/theme";
 import { GlobalStyle } from "../../styles/globalStyles";
 
 import { loadUserPreferences } from "../../store/actions/preferences.action";
+import { updateFontSize } from "../../services/preferences.service";
 
 const HOME_PATHNAME = '/'
 
@@ -29,8 +30,11 @@ function App({ children }) {
   }, [userToken]);
 
   const highContrast = preferences.find(pref => pref.name === "Auto contraste")
+  const fontSize = preferences.find(pref => pref.name === "Tamanho da fonte")
 
-  console.log(preferences)
+  if (fontSize?.value) {
+    updateFontSize(Number(fontSize.value))
+  }
 
   return (
       <ThemeProvider theme={Number(highContrast?.value) ? darkTheme : lightTheme}>

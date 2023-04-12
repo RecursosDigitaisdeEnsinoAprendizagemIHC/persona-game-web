@@ -1,7 +1,5 @@
 import React from "react";
 import Countdown from "react-countdown";
-import { Tooltip } from "react-tippy";
-import { ExitButton } from "../QuestionItem/QuestionItem.style";
 
 // components
 import {

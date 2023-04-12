@@ -17,7 +17,7 @@ const ModalConfirmation = ({ openModal, setIsOpenModal, handleConfirm}) => {
                         <ButtonGroup>
                             <Button
                                 onClick={() => setIsOpenModal(false)}
-                                color="secondary"
+                                color="black"
                                 TooltipText="voltar para tela anterior"
                             >
                                 Voltar

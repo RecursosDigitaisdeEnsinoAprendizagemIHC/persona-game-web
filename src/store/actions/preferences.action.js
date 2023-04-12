@@ -10,7 +10,6 @@ export const loadUserPreferences = (userToken) => {
     try {
       const token = getState().user.userToken || userToken;
 
-      console.log(token)
       const preferences = await getUserPreferences(token);
       dispatch({ type: GET_ALL_PREFERENCES, preferences: preferences.preferenceTypes });
       dispatch({ type: 'SET_LOADING', isLoading: true });
